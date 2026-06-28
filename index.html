@@ -69,7 +69,8 @@
     .chart-header h3{font-size:1.2rem}
     .chart-price{font-size:1.6rem;font-weight:800;color:#f7931a}
     .chart-price small{font-size:.9rem;color:#6f7d90;font-weight:400;margin-left:8px}
-    #priceChart{width:100%;height:180px;background:#0b0e14;border-radius:16px;display:block}
+    .chart-container{position:relative;height:180px;width:100%}
+    #priceChart{display:block;width:100%;height:100%}
     .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;padding-bottom:60px}
     .news-card{background:#131a24;border-radius:20px;padding:24px;border:1px solid #1e2530;transition:.3s}
     .news-card:hover{border-color:#f7931a;transform:scale(1.02)}
@@ -131,6 +132,7 @@
       </div>
     </nav>
   </header>
+
   <section class="container hero">
     <h1>Будущее финансов <br><span>начинается здесь</span></h1>
     <p>Coino — это интеллектуальная платформа для отслеживания криптовалют, прогнозов и безопасного обмена. Присоединяйтесь к сообществу цифровых инвесторов.</p>
@@ -139,12 +141,14 @@
       <a href="#about" class="btn btn-secondary"><i class="fas fa-play"></i> Узнать больше</a>
     </div>
   </section>
+
   <div class="container stats">
     <div class="stat-item"><div class="number">$2.4B</div><div class="label">Суточный объём</div></div>
     <div class="stat-item"><div class="number">120+</div><div class="label">Монет в списке</div></div>
     <div class="stat-item"><div class="number">98.7%</div><div class="label">Точность прогнозов</div></div>
     <div class="stat-item"><div class="number">5M</div><div class="label">Активных пользователей</div></div>
   </div>
+
   <section id="about" class="container">
     <div class="about-grid">
       <div class="about-text">
@@ -160,6 +164,7 @@
       <div class="about-image"><i class="fas fa-coins"></i><p>Coino — ваш надёжный партнёр в мире цифровых активов</p></div>
     </div>
   </section>
+
   <section id="features" class="container">
     <h2 class="section-title">Ключевые возможности</h2>
     <p class="section-sub">Всё необходимое для успешного управления криптопортфелем в одном месте.</p>
@@ -170,6 +175,7 @@
       <div class="feature-card"><i class="fas fa-bell"></i><h3>Умные уведомления</h3><p>Настраивайте оповещения о движении цены и важных новостях.</p></div>
     </div>
   </section>
+
   <section class="container protected-area" id="protectedArea">
     <h3>📊 Ваш персональный дашборд</h3>
     <p>Добро пожаловать, <strong id="dashboardUser"></strong>! Здесь будет отображаться ваша статистика, избранные монеты и аналитика.</p>
@@ -178,6 +184,7 @@
       <div style="background:#1e2530;padding:20px;border-radius:20px;flex:1;min-width:150px;"><div style="color:#6f7d90;">Портфель</div><div style="font-size:1.8rem;font-weight:700;color:#f7931a;">$12,430</div></div>
     </div>
   </section>
+
   <section id="chart" class="container">
     <div class="chart-section">
       <div class="chart-header">
@@ -186,19 +193,23 @@
           <div class="chart-price" id="btcPrice">$67,842 <small>+2.4%</small></div>
         </div>
         <div style="display:flex;gap:12px;">
-          <span style="background:#1e2530;padding:6px 16px;border-radius:20px;font-size:.8rem;">1D</span>
-          <span style="background:#1e2530;padding:6px 16px;border-radius:20px;font-size:.8rem;">1W</span>
-          <span style="background:#f7931a;color:#0b0e14;padding:6px 16px;border-radius:20px;font-size:.8rem;">1M</span>
+          <span style="background:#1e2530;padding:6px 16px;border-radius:20px;font-size:.8rem;cursor:pointer;">1D</span>
+          <span style="background:#1e2530;padding:6px 16px;border-radius:20px;font-size:.8rem;cursor:pointer;">1W</span>
+          <span style="background:#f7931a;color:#0b0e14;padding:6px 16px;border-radius:20px;font-size:.8rem;cursor:pointer;">1M</span>
         </div>
       </div>
-      <canvas id="priceChart"></canvas>
+      <div class="chart-container">
+        <canvas id="priceChart"></canvas>
+      </div>
     </div>
   </section>
+
   <section id="news" class="container">
     <h2 class="section-title">Последние новости</h2>
     <p class="section-sub">Будьте в курсе событий криптоиндустрии.</p>
     <div class="news-grid" id="newsGrid"></div>
   </section>
+
   <section id="subscribe" class="container">
     <div class="subscribe">
       <h2>Готовы начать?</h2>
@@ -206,6 +217,7 @@
       <form id="subscribeForm"><input type="email" placeholder="Введите ваш email" required><button type="submit">Подписаться <i class="fas fa-arrow-right"></i></button></form>
     </div>
   </section>
+
   <footer class="container"><p>&copy; 2026 Coino.info — Все права защищены.</p><div class="social"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-discord"></i></a><a href="#"><i class="fab fa-github"></i></a></div></footer>
 
   <div class="modal-overlay" id="registerModal"><div class="modal"><button class="close-btn" id="closeRegister">&times;</button><h2>Создать аккаунт</h2><p>Зарегистрируйтесь, чтобы получить доступ к полному функционалу.</p><form id="registerForm"><label for="regEmail">Email</label><input type="email" id="regEmail" placeholder="example@mail.com" required><label for="regPassword">Пароль (мин. 6 символов)</label><input type="password" id="regPassword" placeholder="••••••" minlength="6" required><div class="error-msg" id="regError"></div><button type="submit" class="form-btn">Зарегистрироваться</button></form><div class="switch-link">Уже есть аккаунт? <a id="switchToLogin">Войти</a></div></div></div>
@@ -220,22 +232,26 @@
     function getSession(){return sessionStorage.getItem(SESSION_KEY)||null}
     function setSession(e){e?sessionStorage.setItem(SESSION_KEY,e):sessionStorage.removeItem(SESSION_KEY)}
     function findUser(e){return getUsers().find(u=>u.email===e)||null}
+    
     function updateUI(){
       const s=getSession(), g=document.getElementById('guestButtons'), u=document.getElementById('userPanel'), n=document.getElementById('userName'), p=document.getElementById('protectedArea'), d=document.getElementById('dashboardUser'), h=document.getElementById('heroStart');
-      if(s){g.style.display='none';u.style.display='block';const user=findUser(s);n.textContent=user?user.email:s;if(p){p.classList.add('visible');d.textContent=user?user.email:s;}h.textContent='Перейти в дашборд';h.href='#protectedArea';}else{g.style.display='flex';u.style.display='none';if(p)p.classList.remove('visible');h.textContent='Получить доступ';h.href='#';h.onclick=function(e){e.preventDefault();openModal('registerModal');};}
+      if(s){g.style.display='none';u.style.display='block';const user=findUser(s);n.textContent=user?user.email:s;if(p){p.classList.add('visible');d.textContent=user?user.email:s;}h.textContent='Перейти в дашборд';h.href='#protectedArea';h.onclick=null;}else{g.style.display='flex';u.style.display='none';if(p)p.classList.remove('visible');h.textContent='Получить доступ';h.href='#';h.onclick=function(e){e.preventDefault();openModal('registerModal');};}
     }
+    
     function registerUser(e,p){
       const users=getUsers();
       if(users.find(u=>u.email===e))return{success:false,message:'Пользователь с таким email уже существует.'};
       if(p.length<6)return{success:false,message:'Пароль должен содержать минимум 6 символов.'};
       users.push({email:e,password:p});saveUsers(users);return{success:true};
     }
+    
     function loginUser(e,p){
       const user=findUser(e);
       if(!user)return{success:false,message:'Пользователь не найден.'};
       if(user.password!==p)return{success:false,message:'Неверный пароль.'};
       setSession(e);return{success:true};
     }
+    
     function logoutUser(){setSession(null);updateUI();closeAllModals();}
     function openModal(id){document.getElementById(id).classList.add('active');}
     function closeModal(id){document.getElementById(id).classList.remove('active');}
@@ -249,22 +265,29 @@
       document.getElementById('closeRegister').addEventListener('click',()=>closeModal('registerModal'));
       document.getElementById('closeLogin').addEventListener('click',()=>closeModal('loginModal'));
       document.querySelectorAll('.modal-overlay').forEach(o=>{o.addEventListener('click',function(e){if(e.target===this)closeModal(this.id);});});
+      
       document.getElementById('registerForm').addEventListener('submit',function(e){e.preventDefault();const email=document.getElementById('regEmail').value.trim(), password=document.getElementById('regPassword').value, err=document.getElementById('regError');const res=registerUser(email,password);if(res.success){loginUser(email,password);updateUI();closeModal('registerModal');this.reset();err.style.display='none';alert('✅ Регистрация успешна! Добро пожаловать.');}else{err.textContent=res.message;err.style.display='block';}});
       document.getElementById('loginForm').addEventListener('submit',function(e){e.preventDefault();const email=document.getElementById('loginEmail').value.trim(), password=document.getElementById('loginPassword').value, err=document.getElementById('loginError');const res=loginUser(email,password);if(res.success){updateUI();closeModal('loginModal');this.reset();err.style.display='none';alert('✅ Добро пожаловать, '+email+'!');}else{err.textContent=res.message;err.style.display='block';}});
       document.getElementById('logoutBtn').addEventListener('click',function(){if(confirm('Вы уверены, что хотите выйти?'))logoutUser();});
       document.getElementById('subscribeForm').addEventListener('submit',function(e){e.preventDefault();const email=this.querySelector('input[type="email"]');if(email.value&&email.value.includes('@')){alert('✅ Спасибо! Вы подписаны на рассылку.');email.value='';}else{alert('❌ Пожалуйста, введите корректный email.');}});
+      
       updateUI();
       initChart();
       loadNews();
       startPriceSimulation();
     });
 
-    // === ГРАФИК (исправленный: убрано maintainAspectRatio: false) ===
+    // === ГРАФИК (Исправленный и динамический) ===
+    let myChart = null;
+
     function initChart(){
-      const ctx=document.getElementById('priceChart').getContext('2d');
-      const gradient=ctx.createLinearGradient(0,0,0,300);
+      const canvas = document.getElementById('priceChart');
+      if(!canvas) return;
+      const ctx=canvas.getContext('2d');
+      const gradient=ctx.createLinearGradient(0,0,0,180);
       gradient.addColorStop(0,'rgba(247,147,26,0.3)');
       gradient.addColorStop(1,'rgba(247,147,26,0)');
+      
       const data={
         labels:['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
         datasets:[{
@@ -279,12 +302,13 @@
           fill:true
         }]
       };
-      new Chart(ctx,{
+      
+      myChart = new Chart(ctx,{
         type:'line',
         data:data,
         options:{
           responsive:true,
-          // maintainAspectRatio: false, // УБРАЛИ эту строку, теперь график не растягивается
+          maintainAspectRatio: false, // Теперь график идеально слушается CSS-высоты обертки
           plugins:{
             legend:{display:false},
             tooltip:{backgroundColor:'#1e2530',titleColor:'#eef2f6',bodyColor:'#f7931a'}
@@ -306,6 +330,7 @@
         {date:'26 июня 2026',title:'Регуляторы одобрили ETF на Ethereum',desc:'Ожидается приток институционального капитала в ETH.'}
       ];
       const grid=document.getElementById('newsGrid');
+      if(!grid) return;
       grid.innerHTML='';
       newsData.forEach(item=>{
         const card=document.createElement('div');
@@ -315,18 +340,29 @@
       });
     }
 
-    // === ПЛАВНАЯ СИМУЛЯЦИЯ ЦЕНЫ ===
+    // === ПЛАВНАЯ СИМУЛЯЦИЯ ЦЕНЫ С ОБНОВЛЕНИЕМ ГРАФИКА ===
     let currentPrice=67842, trend=0;
     function updatePrice(){
-      const delta=(Math.random()-0.5)*6;
+      const delta=(Math.random()-0.5)*40; // Немного увеличил шаг для заметности динамики
       trend=trend*0.7+delta*0.3;
       currentPrice=Math.round(currentPrice+trend);
       const base=67842;
-      if(currentPrice>base+500)currentPrice=base+500;
-      if(currentPrice<base-500)currentPrice=base-500;
+      if(currentPrice>base+1000)currentPrice=base+1000;
+      if(currentPrice<base-1000)currentPrice=base-1000;
       const percent=((currentPrice-base)/base*100).toFixed(2);
       const sign=percent>=0?'+':'';
-      document.getElementById('btcPrice').innerHTML=`$${currentPrice.toLocaleString()} <small>${sign}${percent}%</small>`;
+      
+      const priceElement = document.getElementById('btcPrice');
+      if(priceElement) {
+        priceElement.innerHTML=`$${currentPrice.toLocaleString()} <small>${sign}${percent}%</small>`;
+      }
+
+      // Динамическое обновление последней точки на самом графике
+      if(myChart) {
+        const lastIndex = myChart.data.datasets[0].data.length - 1;
+        myChart.data.datasets[0].data[lastIndex] = currentPrice;
+        myChart.update('none'); // Обновление без перезапуска анимации "всплытия" линии
+      }
     }
     function startPriceSimulation(){setInterval(updatePrice,10000);}
   </script>
