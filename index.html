@@ -175,8 +175,32 @@ new Chart(ctx,{type:'line',data:{labels:['Янв','Фев','Мар','Апр','М
 const newsData=[{date:'28 июня 2026',title:'Биткоин обновил годовой максимум',desc:'BTC достиг $68 000 на фоне позитивных макроэкономических данных.'},{date:'27 июня 2026',title:'Coino запускает стейкинг-пулы',desc:'Новая функция позволит зарабатывать до 12% годовых в USDC.'},{date:'26 июня 2026',title:'Регуляторы одобрили ETF на Ethereum',desc:'Ожидается приток институционального капитала в ETH.'}];
 const grid=document.getElementById('newsGrid');newsData.forEach(item=>{const card=document.createElement('div');card.className='news-card';card.innerHTML=`<div class="date">${item.date}</div><h4>${item.title}</h4><p>${item.desc}</p><a href="#">Читать далее →</a>`;grid.appendChild(card);});
 
-// Price simulation
-function updatePrice(){const base=67842;const change=(Math.random()-0.48)*120;const newPrice=Math.round(base+change);const percent=((newPrice-base)/base*100).toFixed(2);const sign=percent>=0?'+':'';document.getElementById('btcPrice').innerHTML=`$${newPrice.toLocaleString()} <small>${sign}${percent}%</small>`;}setInterval(updatePrice,5000);
+// Плавная симуляция цены
+let currentPrice = 67842;
+let trend = 0; // небольшой тренд
+
+function updatePrice() {
+  // Случайное изменение от -3 до +3 долларов (плавно)
+  const delta = (Math.random() - 0.5) * 6;
+  // Добавляем инерцию (чтобы цена не меняла направление слишком часто)
+  trend = trend * 0.7 + delta * 0.3;
+  currentPrice = Math.round(currentPrice + trend);
+  
+  // Ограничиваем, чтобы цена не уходила слишком далеко (в пределах ±500 от базы)
+  const base = 67842;
+  if (currentPrice > base + 500) currentPrice = base + 500;
+  if (currentPrice < base - 500) currentPrice = base - 500;
+  
+  // Вычисляем изменение в процентах от начальной базы (для отображения)
+  const percent = ((currentPrice - base) / base * 100).toFixed(2);
+  const sign = percent >= 0 ? '+' : '';
+  document.getElementById('btcPrice').innerHTML = 
+    `$${currentPrice.toLocaleString()} <small>${sign}${percent}%</small>`;
+}
+
+// Обновляем раз в 10 секунд (вместо 5)
+setInterval(updatePrice, 10000);
+  
 });
 })();
 </script>
