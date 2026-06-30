@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ===== RESET & BASE ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #0b0e14; color: #eef2f6; line-height: 1.6; }
     a { text-decoration: none; color: inherit; }
@@ -35,22 +34,14 @@
     nav a:hover { color: #f7931a; }
 
     /* ===== HERO ===== */
-    .hero {
-      text-align: center;
-      padding: 80px 0 60px;
-    }
+    .hero { text-align: center; padding: 80px 0 60px; }
     .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 20px; }
     .hero h1 span { background: linear-gradient(145deg, #f7931a, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero p { font-size: 1.25rem; color: #9aa7b9; max-width: 700px; margin: 0 auto; }
 
     /* ===== БЛОКИ ===== */
-    .info-block {
-      padding: 60px 0;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .info-block:last-of-type {
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    .info-block { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+    .info-block:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.05); }
     .info-block .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -72,10 +63,155 @@
     }
     .info-block .grid .image i { font-size: 5rem; color: #f7931a; }
     .info-block .grid .image p { margin-top: 15px; font-weight: 600; color: #cbd5e1; }
-
-    /* спец-стили для второго блока (можно зеркально отразить) */
     .info-block.reverse .grid { direction: rtl; }
     .info-block.reverse .grid > * { direction: ltr; }
+
+    /* ===== АНАЛИТИКА (индекс + прогноз) ===== */
+    #analytics { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .analytics-card {
+      background: #0f141c;
+      border-radius: 30px;
+      padding: 30px 25px;
+      border: 1px solid #1e2530;
+      transition: 0.3s;
+    }
+    .analytics-card:hover { border-color: #f7931a; }
+    .analytics-card .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #f7931a;
+    }
+
+    /* ===== ИНДЕКС (внутри карточки) ===== */
+    .index-main {
+      text-align: center;
+    }
+    .index-main .big-number {
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      transition: 0.5s;
+    }
+    .index-main .label {
+      color: #6f7d90;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    .index-main .sentiment-badge {
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .index-metrics {
+      text-align: left;
+      max-width: 100%;
+    }
+    .index-metrics .metric {
+      margin-bottom: 12px;
+    }
+    .index-metrics .metric .label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #b0bccb;
+    }
+    .index-metrics .metric .bar-bg {
+      background: #1e2530;
+      height: 6px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 3px;
+    }
+    .index-metrics .metric .bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: #f7931a;
+      transition: width 0.5s;
+    }
+    .index-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #6f7d90;
+      font-size: 0.8rem;
+    }
+
+    /* ===== ПРОГНОЗ (внутри карточки) ===== */
+    .forecast-main {
+      text-align: center;
+    }
+    .forecast-main .direction {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+    .forecast-main .probability {
+      background: #1e2530;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-weight: 600;
+      display: inline-block;
+      margin: 10px 0 15px;
+    }
+    .forecast-confidence {
+      margin: 15px 0;
+    }
+    .forecast-confidence .label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #6f7d90;
+    }
+    .forecast-confidence .bar-bg {
+      background: #1e2530;
+      height: 6px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .forecast-confidence .bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: #f7931a;
+      transition: width 0.5s;
+    }
+    .forecast-details {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: #b0bccb;
+      margin: 10px 0 15px;
+    }
+    .forecast-details i { color: #f7931a; }
+    .forecast-comment {
+      background: #0b0e14;
+      border-radius: 16px;
+      padding: 12px 18px;
+      border-left: 3px solid #f7931a;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .forecast-comment i { color: #f7931a; margin-right: 6px; }
+
+    /* ===== КОНТАКТЫ ===== */
+    #contact { padding: 40px 0 60px; text-align:center; }
+    #contact .contact-links { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:20px; }
+    #contact .contact-links a {
+      background:#1e2530; padding:12px 28px; border-radius:40px; border:1px solid #2a313c; transition:0.3s;
+    }
+    #contact .contact-links a:hover { border-color:#f7931a; }
 
     /* ===== FOOTER ===== */
     footer {
@@ -97,12 +233,16 @@
       .info-block .grid { grid-template-columns: 1fr; text-align: center; }
       .info-block .grid .text ul li { justify-content: center; }
       .info-block.reverse .grid { direction: ltr; }
+      .analytics-grid { grid-template-columns: 1fr; }
       header { flex-direction: column; align-items: stretch; }
       nav { justify-content: center; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
       .section-title { font-size: 2rem; }
+      .analytics-card { padding: 20px 15px; }
+      .index-main .big-number { font-size: 2.8rem; }
+      .forecast-main .direction { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -114,6 +254,7 @@
     <nav>
       <a href="#coino">О Coino</a>
       <a href="#coinoaxis">CoinoAxis</a>
+      <a href="#analytics">Аналитика</a>
       <a href="#contact">Контакты</a>
     </nav>
   </header>
@@ -172,19 +313,103 @@
     </div>
   </section>
 
+  <!-- ===== НОВЫЙ РАЗДЕЛ: АНАЛИТИКА (индекс + прогноз) ===== -->
+  <section id="analytics" class="container">
+    <h2 class="section-title">📊 Аналитика CoinoAxis</h2>
+    <p class="section-sub">Ончейн-здоровье, рыночные настроения и прогноз на основе индекса</p>
+
+    <div class="analytics-grid">
+      <!-- КАРТОЧКА ИНДЕКСА -->
+      <div class="analytics-card">
+        <div class="card-title"><i class="fas fa-chart-line"></i> Индекс CoinoAxis</div>
+        <div class="index-main">
+          <div class="big-number" id="indexValue">68.5</div>
+          <div class="label">Индекс здоровья и настроения (0–100)</div>
+          <div class="sentiment-badge" id="sentimentLabel" style="background:#f7931a; color:#0b0e14;">🟡 Нейтрально-бычий</div>
+        </div>
+        <div class="index-metrics">
+          <!-- 1. Fear & Greed -->
+          <div class="metric">
+            <div class="label-row">
+              <span><i class="fas fa-face-smile" style="color:#f7931a;"></i> Страх и жадность</span>
+              <span id="fearGreedValue">68</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" id="fearGreedBar" style="width:68%;"></div></div>
+          </div>
+          <!-- 2. MVRV -->
+          <div class="metric">
+            <div class="label-row">
+              <span><i class="fas fa-scale-balanced" style="color:#f7931a;"></i> MVRV</span>
+              <span id="mvrvValue">1.82</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" id="mvrvBar" style="width:65%;"></div></div>
+          </div>
+          <!-- 3. NUPL -->
+          <div class="metric">
+            <div class="label-row">
+              <span><i class="fas fa-chart-simple" style="color:#f7931a;"></i> NUPL</span>
+              <span id="nuplValue">0.42</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" id="nuplBar" style="width:60%;"></div></div>
+          </div>
+          <!-- 4. Активные адреса -->
+          <div class="metric">
+            <div class="label-row">
+              <span><i class="fas fa-users" style="color:#f7931a;"></i> Активные адреса</span>
+              <span id="activeAddresses">892,431</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" id="activeAddressesBar" style="width:72%;"></div></div>
+          </div>
+          <!-- 5. Доминирование BTC -->
+          <div class="metric">
+            <div class="label-row">
+              <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> Доминирование BTC</span>
+              <span id="btcDomValue">54.2%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" id="btcDomBar" style="width:54.2%;"></div></div>
+          </div>
+        </div>
+        <div class="index-footer">
+          <i class="fas fa-arrow-up" style="color:#4caf50;"></i> +1.2% за сегодня (демо-данные)
+          <div style="font-size:0.7rem; color:#6f7d90;">Данные симулированы</div>
+        </div>
+      </div>
+
+      <!-- КАРТОЧКА ПРОГНОЗА -->
+      <div class="analytics-card">
+        <div class="card-title"><i class="fas fa-brain"></i> Прогноз от Axis</div>
+        <div class="forecast-main">
+          <div class="direction" id="forecastDirection">🟢 БЫЧИЙ</div>
+          <div class="probability">Вероятность <span id="forecastProbability">72</span>%</div>
+          <div class="forecast-confidence">
+            <div class="label-row">
+              <span>Уверенность</span>
+              <span id="confidenceLabel">Высокая</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" id="confidenceBar" style="width:72%;"></div></div>
+          </div>
+          <div class="forecast-details">
+            <span><i class="far fa-clock"></i> Горизонт: <strong id="forecastHorizon">24 часа</strong></span>
+            <span><i class="fas fa-arrow-trend-up"></i> Тренд: <strong id="forecastTrend">Ускорение</strong></span>
+          </div>
+          <div class="forecast-comment">
+            <i class="fas fa-quote-left"></i>
+            <span id="forecastComment">Индекс уверенно растёт, активность адресов увеличивается — ожидаем продолжения восходящего движения.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== КОНТАКТЫ ===== -->
-  <section id="contact" class="container" style="padding: 40px 0 60px; text-align:center;">
+  <section id="contact" class="container">
     <h2 class="section-title">Свяжитесь с нами</h2>
-    <p style="color:#9aa7b9; max-width:500px; margin:0 auto 30px;">
+    <p style="color:#9aa7b9; max-width:500px; margin:0 auto 10px;">
       Есть вопросы или предложения? Напишите нам, и мы ответим в ближайшее время.
     </p>
-    <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap;">
-      <a href="mailto:info@coino.info" style="background:#1e2530; padding:12px 28px; border-radius:40px; border:1px solid #2a313c; transition:0.3s;">
-        <i class="fas fa-envelope"></i> info@coino.info
-      </a>
-      <a href="#" style="background:#1e2530; padding:12px 28px; border-radius:40px; border:1px solid #2a313c; transition:0.3s;">
-        <i class="fab fa-telegram"></i> @coino_chat
-      </a>
+    <div class="contact-links">
+      <a href="mailto:info@coino.info"><i class="fas fa-envelope"></i> info@coino.info</a>
+      <a href="#"><i class="fab fa-telegram"></i> @coino_chat</a>
     </div>
   </section>
 
@@ -199,5 +424,158 @@
     </div>
   </footer>
 
+  <!-- ===== СКРИПТЫ ===== -->
+  <script>
+    // === ИНДЕКС COINOAXIS (здоровье и настроение) ===
+    function updateIndex() {
+      // Базовые значения (тренды)
+      const baseFearGreed = 65;
+      const baseMVRV = 1.8;
+      const baseNUPL = 0.4;
+      const baseAddresses = 850000;
+      const baseBtcDom = 54.0;
+
+      // Симуляция колебаний
+      const fearGreed = Math.round(Math.max(0, Math.min(100, baseFearGreed + (Math.random() - 0.5) * 10)));
+      const mvrv = (baseMVRV + (Math.random() - 0.5) * 0.15).toFixed(2);
+      const nupl = (baseNUPL + (Math.random() - 0.5) * 0.06).toFixed(2);
+      const addresses = Math.round(baseAddresses + (Math.random() - 0.5) * 30000);
+      const btcDom = (baseBtcDom + (Math.random() - 0.5) * 1.5).toFixed(1);
+
+      // Обновляем DOM
+      document.getElementById('fearGreedValue').textContent = fearGreed;
+      document.getElementById('mvrvValue').textContent = mvrv;
+      document.getElementById('nuplValue').textContent = nupl;
+      document.getElementById('activeAddresses').textContent = addresses.toLocaleString();
+      document.getElementById('btcDomValue').textContent = btcDom + '%';
+
+      document.getElementById('fearGreedBar').style.width = fearGreed + '%';
+      document.getElementById('mvrvBar').style.width = Math.min(100, (parseFloat(mvrv) / 3 * 100)) + '%';
+      document.getElementById('nuplBar').style.width = Math.min(100, ((parseFloat(nupl) + 0.5) / 1.5 * 100)) + '%';
+      document.getElementById('activeAddressesBar').style.width = Math.min(100, (addresses / 1200000 * 100)) + '%';
+      document.getElementById('btcDomBar').style.width = parseFloat(btcDom) + '%';
+
+      // Композитный индекс
+      const weights = { fearGreed: 0.25, mvrv: 0.20, nupl: 0.20, addresses: 0.20, btcDom: 0.15 };
+      const normFear = fearGreed / 100;
+      const normMVRV = Math.min(1, parseFloat(mvrv) / 3);
+      const normNUPL = Math.min(1, (parseFloat(nupl) + 0.5) / 1.5);
+      const normAddresses = Math.min(1, addresses / 1200000);
+      const normBtc = parseFloat(btcDom) / 70;
+
+      const rawIndex = (
+        normFear * weights.fearGreed +
+        normMVRV * weights.mvrv +
+        normNUPL * weights.nupl +
+        normAddresses * weights.addresses +
+        normBtc * weights.btcDom
+      ) * 100;
+
+      const index = Math.min(100, Math.max(0, Math.round(rawIndex * 10) / 10));
+      const indexEl = document.getElementById('indexValue');
+      indexEl.textContent = index.toFixed(1);
+
+      // Метка настроения
+      const sentLabel = document.getElementById('sentimentLabel');
+      if (index >= 80) {
+        sentLabel.textContent = '🟢 Экстремально бычий';
+        sentLabel.style.background = '#4caf50';
+        sentLabel.style.color = '#fff';
+      } else if (index >= 65) {
+        sentLabel.textContent = '🟡 Бычий';
+        sentLabel.style.background = '#f7931a';
+        sentLabel.style.color = '#0b0e14';
+      } else if (index >= 45) {
+        sentLabel.textContent = '🟠 Нейтральный';
+        sentLabel.style.background = '#ffb347';
+        sentLabel.style.color = '#0b0e14';
+      } else if (index >= 25) {
+        sentLabel.textContent = '🔴 Медвежий';
+        sentLabel.style.background = '#ff6b6b';
+        sentLabel.style.color = '#fff';
+      } else {
+        sentLabel.textContent = '⛔ Экстремально медвежий';
+        sentLabel.style.background = '#d32f2f';
+        sentLabel.style.color = '#fff';
+      }
+
+      // Цвет главного числа
+      if (index >= 65) indexEl.style.color = '#4caf50';
+      else if (index >= 40) indexEl.style.color = '#f7931a';
+      else indexEl.style.color = '#ff6b6b';
+    }
+
+    // === ПРОГНОЗ ОТ AXIS ===
+    function updateForecast() {
+      const indexValue = parseFloat(document.getElementById('indexValue').textContent) || 50;
+      const randomShift = (Math.random() - 0.5) * 10;
+      let direction, probability, confidence, horizon, trend, comment;
+
+      if (indexValue >= 65) {
+        direction = '🟢 БЫЧИЙ';
+        probability = Math.min(95, Math.round(70 + (indexValue - 65) * 0.8 + randomShift * 0.5));
+        trend = 'Ускорение';
+        comment = 'Индекс уверенно растёт, активность адресов увеличивается — ожидаем продолжения восходящего движения.';
+      } else if (indexValue >= 45) {
+        direction = '🟡 НЕЙТРАЛЬНЫЙ';
+        probability = Math.round(55 + (indexValue - 45) * 0.6 + randomShift * 0.5);
+        trend = 'Консолидация';
+        comment = 'Рынок консолидируется. Следим за ончейн-данными — возможен пробой в любую сторону.';
+      } else {
+        direction = '🔴 МЕДВЕЖИЙ';
+        probability = Math.min(95, Math.round(70 + (45 - indexValue) * 0.8 + randomShift * 0.5));
+        trend = 'Замедление';
+        comment = 'Индекс снижается, MVRV и NUPL указывают на перегретость — вероятна коррекция.';
+      }
+
+      // Уверенность (симуляция)
+      const volatility = Math.round(20 + Math.random() * 40);
+      let confidenceLabel, confidenceWidth;
+      if (volatility < 35) {
+        confidenceLabel = 'Высокая';
+        confidenceWidth = 80 + Math.random() * 15;
+      } else if (volatility < 60) {
+        confidenceLabel = 'Средняя';
+        confidenceWidth = 50 + Math.random() * 25;
+      } else {
+        confidenceLabel = 'Низкая';
+        confidenceWidth = 25 + Math.random() * 20;
+      }
+
+      const horizons = ['24 часа', '3 дня', '5 дней', '1 неделя'];
+      horizon = horizons[Math.floor(Math.random() * horizons.length)];
+
+      // Обновляем DOM
+      document.getElementById('forecastDirection').textContent = direction;
+      document.getElementById('forecastProbability').textContent = probability;
+      document.getElementById('confidenceLabel').textContent = confidenceLabel;
+      document.getElementById('confidenceBar').style.width = confidenceWidth + '%';
+      document.getElementById('forecastHorizon').textContent = horizon;
+      document.getElementById('forecastTrend').textContent = trend;
+      document.getElementById('forecastComment').textContent = comment;
+
+      // Цвет направления
+      const dirEl = document.getElementById('forecastDirection');
+      if (direction.includes('БЫЧИЙ')) dirEl.style.color = '#4caf50';
+      else if (direction.includes('НЕЙТРАЛЬНЫЙ')) dirEl.style.color = '#ffb347';
+      else dirEl.style.color = '#ff6b6b';
+
+      // Цвет бара уверенности
+      const bar = document.getElementById('confidenceBar');
+      if (confidenceWidth > 70) bar.style.background = '#4caf50';
+      else if (confidenceWidth > 45) bar.style.background = '#f7931a';
+      else bar.style.background = '#ff6b6b';
+    }
+
+    // === ЗАПУСК ===
+    function updateAll() {
+      updateIndex();
+      updateForecast();
+    }
+
+    // Первый запуск и интервал
+    updateAll();
+    setInterval(updateAll, 10000);
+  </script>
 </body>
 </html>
