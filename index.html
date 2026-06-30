@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,39 +9,90 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
+    /* ===== CSS-ПЕРЕМЕННЫЕ (темы) ===== */
+    :root {
+      --bg: #0b0e14;
+      --text: #eef2f6;
+      --card-bg: #0f141c;
+      --card-border: #1e2530;
+      --muted: #6f7d90;
+      --muted-light: #9aa7b9;
+      --input-bg: #0b0e14;
+      --shadow: 0 20px 40px rgba(0,0,0,0.5);
+      --accent: #f7931a;
+      --accent-hover: #ffb347;
+      --nav-color: #aab4c2;
+      --hero-text: #eef2f6;
+      --stat-label: #8f9db0;
+      --section-border: rgba(255,255,255,0.05);
+      --footer-border: rgba(255,255,255,0.05);
+    }
+    [data-theme="light"] {
+      --bg: #f4f6f9;
+      --text: #1a202c;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --muted: #718096;
+      --muted-light: #4a5568;
+      --input-bg: #edf2f7;
+      --shadow: 0 20px 40px rgba(0,0,0,0.1);
+      --nav-color: #4a5568;
+      --hero-text: #1a202c;
+      --stat-label: #718096;
+      --section-border: rgba(0,0,0,0.08);
+      --footer-border: rgba(0,0,0,0.08);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #0b0e14; color: #eef2f6; line-height: 1.6; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .section-title { font-size: 2.4rem; font-weight: 700; text-align: center; margin-bottom: 12px; }
-    .section-sub { text-align: center; color: #9aa7b9; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; }
+    .section-sub { text-align: center; color: var(--muted-light); max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem; }
 
-    /* ===== HEADER ===== */
+    /* ===== ШАПКА ===== */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--section-border);
       flex-wrap: wrap;
       gap: 15px;
     }
     .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
-    .logo span { color: #f7931a; }
-    nav { display: flex; gap: 30px; flex-wrap: wrap; }
-    nav a { font-weight: 600; color: #aab4c2; transition: color 0.3s; }
-    nav a:hover { color: #f7931a; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 25px; flex-wrap: wrap; align-items: center; }
+    nav a { font-weight: 600; color: var(--nav-color); transition: color 0.3s; }
+    nav a:hover { color: var(--accent); }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--card-border);
+      border-radius: 30px;
+      padding: 6px 14px;
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ===== HERO ===== */
+    /* ===== ГЕРОЙ ===== */
     .hero { text-align: center; padding: 80px 0 60px; }
-    .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 20px; }
-    .hero h1 span { background: linear-gradient(145deg, #f7931a, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 1.25rem; color: #9aa7b9; max-width: 700px; margin: 0 auto; }
+    .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 20px; color: var(--hero-text); }
+    .hero h1 span { background: linear-gradient(145deg, var(--accent), #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 1.25rem; color: var(--muted-light); max-width: 700px; margin: 0 auto; }
 
     /* ===== БЛОКИ ===== */
-    .info-block { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-    .info-block:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .info-block { padding: 60px 0; border-top: 1px solid var(--section-border); }
+    .info-block:last-of-type { border-bottom: 1px solid var(--section-border); }
     .info-block .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -49,183 +100,209 @@
       align-items: center;
     }
     .info-block .grid .text h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    .info-block .grid .text p { color: #bcc6d4; margin-bottom: 15px; }
+    .info-block .grid .text p { color: var(--muted-light); margin-bottom: 15px; }
     .info-block .grid .text ul { list-style: none; margin-top: 10px; }
     .info-block .grid .text ul li { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-weight: 500; }
-    .info-block .grid .text ul li i { color: #f7931a; width: 24px; }
+    .info-block .grid .text ul li i { color: var(--accent); width: 24px; }
     .info-block .grid .image {
-      background: linear-gradient(145deg, #1e2530, #131a24);
+      background: var(--card-bg);
       border-radius: 30px;
       padding: 40px 20px;
       text-align: center;
-      border: 1px solid #2a313c;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
     }
-    .info-block .grid .image i { font-size: 5rem; color: #f7931a; }
-    .info-block .grid .image p { margin-top: 15px; font-weight: 600; color: #cbd5e1; }
+    .info-block .grid .image i { font-size: 5rem; color: var(--accent); }
+    .info-block .grid .image p { margin-top: 15px; font-weight: 600; color: var(--text); }
     .info-block.reverse .grid { direction: rtl; }
     .info-block.reverse .grid > * { direction: ltr; }
 
-    /* ===== АНАЛИТИКА (индекс + прогноз) ===== */
-    #analytics { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-
+    /* ===== АНАЛИТИКА ===== */
+    #analytics { padding: 60px 0; border-top: 1px solid var(--section-border); }
     .analytics-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 30px;
       align-items: stretch;
     }
     .analytics-card {
-      background: #0f141c;
+      background: var(--card-bg);
       border-radius: 30px;
-      padding: 30px 25px;
-      border: 1px solid #1e2530;
+      padding: 25px 25px 20px;
+      border: 1px solid var(--card-border);
       transition: 0.3s;
+      position: relative;
     }
-    .analytics-card:hover { border-color: #f7931a; }
-    .analytics-card .card-title {
-      font-size: 1.3rem;
+    .analytics-card:hover { border-color: var(--accent); }
+    .card-title {
+      font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 15px;
       text-align: center;
-      color: #f7931a;
+      color: var(--accent);
     }
 
-    /* ===== ИНДЕКС (внутри карточки) ===== */
-    .index-main {
-      text-align: center;
-    }
-    .index-main .big-number {
-      font-size: 3.8rem;
-      font-weight: 800;
-      letter-spacing: -2px;
-      transition: 0.5s;
-    }
-    .index-main .label {
-      color: #6f7d90;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-    .index-main .sentiment-badge {
+    /* — Индекс — */
+    .index-main { text-align: center; }
+    .index-chart-wrap { height: 80px; margin: 0 -10px 10px; }
+    .index-chart-wrap canvas { width: 100% !important; height: 100% !important; }
+    .big-number { font-size: 3.6rem; font-weight: 800; letter-spacing: -2px; transition: color 0.3s; }
+    .label { color: var(--muted); font-size: 0.85rem; margin-bottom: 6px; }
+    .sentiment-badge {
       display: inline-block;
       padding: 4px 16px;
       border-radius: 30px;
       font-weight: 600;
       font-size: 0.9rem;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      background: var(--accent);
+      color: #0b0e14;
     }
-    .index-metrics {
-      text-align: left;
-      max-width: 100%;
-    }
-    .index-metrics .metric {
-      margin-bottom: 12px;
-    }
+    .index-metrics { text-align: left; }
+    .index-metrics .metric { margin-bottom: 10px; }
     .index-metrics .metric .label-row {
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
-      color: #b0bccb;
+      font-size: 0.8rem;
+      color: var(--muted-light);
     }
     .index-metrics .metric .bar-bg {
-      background: #1e2530;
-      height: 6px;
+      background: var(--input-bg);
+      height: 5px;
       border-radius: 10px;
       overflow: hidden;
-      margin-top: 3px;
+      margin-top: 2px;
     }
     .index-metrics .metric .bar-fill {
       height: 100%;
       border-radius: 10px;
-      background: #f7931a;
-      transition: width 0.5s;
+      background: var(--accent);
+      transition: width 0.5s ease;
     }
     .index-footer {
-      margin-top: 20px;
+      margin-top: 15px;
       text-align: center;
-      color: #6f7d90;
+      color: var(--muted);
       font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
+    .currency-switch {
+      display: flex;
+      gap: 6px;
+      background: var(--input-bg);
+      padding: 4px;
+      border-radius: 30px;
+      border: 1px solid var(--card-border);
+    }
+    .currency-switch button {
+      background: none;
+      border: none;
+      padding: 3px 12px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .currency-switch button.active {
+      background: var(--accent);
+      color: #0b0e14;
+    }
+    .currency-switch button:hover:not(.active) { color: var(--text); }
 
-    /* ===== ПРОГНОЗ (внутри карточки) ===== */
-    .forecast-main {
-      text-align: center;
-    }
-    .forecast-main .direction {
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
+    /* — Прогноз — */
+    .forecast-main { text-align: center; }
+    .forecast-main .direction { font-size: 2rem; font-weight: 800; }
     .forecast-main .probability {
-      background: #1e2530;
+      background: var(--input-bg);
       padding: 4px 14px;
       border-radius: 30px;
       font-weight: 600;
       display: inline-block;
-      margin: 10px 0 15px;
+      margin: 8px 0 12px;
+      font-size: 0.95rem;
     }
-    .forecast-confidence {
-      margin: 15px 0;
-    }
+    .forecast-confidence { margin: 12px 0; }
     .forecast-confidence .label-row {
       display: flex;
       justify-content: space-between;
       font-size: 0.8rem;
-      color: #6f7d90;
+      color: var(--muted);
     }
     .forecast-confidence .bar-bg {
-      background: #1e2530;
-      height: 6px;
+      background: var(--input-bg);
+      height: 5px;
       border-radius: 10px;
       overflow: hidden;
     }
     .forecast-confidence .bar-fill {
       height: 100%;
       border-radius: 10px;
-      background: #f7931a;
-      transition: width 0.5s;
+      background: var(--accent);
+      transition: width 0.5s ease;
     }
     .forecast-details {
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      font-size: 0.9rem;
-      color: #b0bccb;
-      margin: 10px 0 15px;
+      font-size: 0.85rem;
+      color: var(--muted-light);
+      margin: 8px 0 12px;
     }
-    .forecast-details i { color: #f7931a; }
+    .forecast-details i { color: var(--accent); }
     .forecast-comment {
-      background: #0b0e14;
+      background: var(--input-bg);
       border-radius: 16px;
-      padding: 12px 18px;
-      border-left: 3px solid #f7931a;
+      padding: 10px 16px;
+      border-left: 3px solid var(--accent);
       text-align: left;
       font-size: 0.9rem;
-      color: #cbd5e1;
+      color: var(--text);
     }
-    .forecast-comment i { color: #f7931a; margin-right: 6px; }
+    .forecast-comment i { color: var(--accent); margin-right: 6px; }
+
+    /* Таймер */
+    .timer {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .timer i { color: var(--accent); }
 
     /* ===== КОНТАКТЫ ===== */
     #contact { padding: 40px 0 60px; text-align:center; }
-    #contact .contact-links { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:20px; }
-    #contact .contact-links a {
-      background:#1e2530; padding:12px 28px; border-radius:40px; border:1px solid #2a313c; transition:0.3s;
+    .contact-links { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:20px; }
+    .contact-links a {
+      background: var(--card-bg);
+      padding:12px 28px;
+      border-radius:40px;
+      border:1px solid var(--card-border);
+      transition:0.3s;
+      color: var(--text);
     }
-    #contact .contact-links a:hover { border-color:#f7931a; }
+    .contact-links a:hover { border-color: var(--accent); }
 
-    /* ===== FOOTER ===== */
+    /* ===== ФУТЕР ===== */
     footer {
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid var(--footer-border);
       padding: 30px 0 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      color: #6f7d90;
+      color: var(--muted);
       font-size: 0.9rem;
     }
-    footer .social a { margin-left: 18px; font-size: 1.3rem; color: #6f7d90; transition: 0.3s; }
-    footer .social a:hover { color: #f7931a; }
+    footer .social a { margin-left: 18px; font-size: 1.3rem; color: var(--muted); transition: 0.3s; }
+    footer .social a:hover { color: var(--accent); }
 
     /* ===== АДАПТИВ ===== */
     @media (max-width: 768px) {
@@ -236,13 +313,14 @@
       .analytics-grid { grid-template-columns: 1fr; }
       header { flex-direction: column; align-items: stretch; }
       nav { justify-content: center; }
+      .index-footer { flex-direction: column; align-items: center; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
       .section-title { font-size: 2rem; }
-      .analytics-card { padding: 20px 15px; }
-      .index-main .big-number { font-size: 2.8rem; }
-      .forecast-main .direction { font-size: 1.8rem; }
+      .analytics-card { padding: 18px 15px; }
+      .big-number { font-size: 2.8rem; }
+      .forecast-main .direction { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -256,6 +334,7 @@
       <a href="#coinoaxis">CoinoAxis</a>
       <a href="#analytics">Аналитика</a>
       <a href="#contact">Контакты</a>
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span id="themeLabel">Тёмная</span></button>
     </nav>
   </header>
 
@@ -279,11 +358,15 @@
           <li><i class="fas fa-coins"></i> Общая эмиссия — 100 млн CNO</li>
           <li><i class="fas fa-globe"></i> Поддержка смарт-контрактов</li>
         </ul>
-        <p style="margin-top:20px;"><strong>Текущий курс:</strong> ≈ $0.42 (демо-данные)</p>
+        <p style="margin-top:20px;">
+          <strong>Текущий курс:</strong> 
+          <span id="cnoPrice">$0.42</span>
+          <span style="font-size:0.8rem; color:var(--muted); margin-left:8px;">(в выбранной валюте)</span>
+        </p>
       </div>
       <div class="image">
         <i class="fas fa-coins"></i>
-        <p style="font-size:2rem; font-weight:800; color:#f7931a;">CNO</p>
+        <p style="font-size:2rem; font-weight:800; color:var(--accent);">CNO</p>
         <p>Символ валюты — CNO<br>Активен с 2024 года</p>
       </div>
     </div>
@@ -297,7 +380,7 @@
       <div class="image">
         <i class="fas fa-graduation-cap"></i>
         <p>Обучение через практику</p>
-        <p style="font-size:0.9rem; color:#9aa7b9; margin-top:10px;">Бесплатные курсы, вебинары, симуляторы</p>
+        <p style="font-size:0.9rem; color:var(--muted-light); margin-top:10px;">Бесплатные курсы, вебинары, симуляторы</p>
       </div>
       <div class="text">
         <h2>Что такое CoinoAxis?</h2>
@@ -313,7 +396,7 @@
     </div>
   </section>
 
-  <!-- ===== НОВЫЙ РАЗДЕЛ: АНАЛИТИКА (индекс + прогноз) ===== -->
+  <!-- ===== АНАЛИТИКА ===== -->
   <section id="analytics" class="container">
     <h2 class="section-title">📊 Аналитика CoinoAxis</h2>
     <p class="section-sub">Ончейн-здоровье, рыночные настроения и прогноз на основе индекса</p>
@@ -323,55 +406,67 @@
       <div class="analytics-card">
         <div class="card-title"><i class="fas fa-chart-line"></i> Индекс CoinoAxis</div>
         <div class="index-main">
+          <!-- Мини-график -->
+          <div class="index-chart-wrap">
+            <canvas id="indexChart"></canvas>
+          </div>
+          <!-- Главное число -->
           <div class="big-number" id="indexValue">68.5</div>
           <div class="label">Индекс здоровья и настроения (0–100)</div>
-          <div class="sentiment-badge" id="sentimentLabel" style="background:#f7931a; color:#0b0e14;">🟡 Нейтрально-бычий</div>
+          <div class="sentiment-badge" id="sentimentLabel" style="background:var(--accent); color:#0b0e14;">🟡 Нейтрально-бычий</div>
         </div>
+        <!-- Метрики -->
         <div class="index-metrics">
-          <!-- 1. Fear & Greed -->
           <div class="metric">
             <div class="label-row">
-              <span><i class="fas fa-face-smile" style="color:#f7931a;"></i> Страх и жадность</span>
+              <span><i class="fas fa-face-smile" style="color:var(--accent);"></i> Страх и жадность</span>
               <span id="fearGreedValue">68</span>
             </div>
             <div class="bar-bg"><div class="bar-fill" id="fearGreedBar" style="width:68%;"></div></div>
           </div>
-          <!-- 2. MVRV -->
           <div class="metric">
             <div class="label-row">
-              <span><i class="fas fa-scale-balanced" style="color:#f7931a;"></i> MVRV</span>
+              <span><i class="fas fa-scale-balanced" style="color:var(--accent);"></i> MVRV</span>
               <span id="mvrvValue">1.82</span>
             </div>
             <div class="bar-bg"><div class="bar-fill" id="mvrvBar" style="width:65%;"></div></div>
           </div>
-          <!-- 3. NUPL -->
           <div class="metric">
             <div class="label-row">
-              <span><i class="fas fa-chart-simple" style="color:#f7931a;"></i> NUPL</span>
+              <span><i class="fas fa-chart-simple" style="color:var(--accent);"></i> NUPL</span>
               <span id="nuplValue">0.42</span>
             </div>
             <div class="bar-bg"><div class="bar-fill" id="nuplBar" style="width:60%;"></div></div>
           </div>
-          <!-- 4. Активные адреса -->
           <div class="metric">
             <div class="label-row">
-              <span><i class="fas fa-users" style="color:#f7931a;"></i> Активные адреса</span>
+              <span><i class="fas fa-users" style="color:var(--accent);"></i> Активные адреса</span>
               <span id="activeAddresses">892,431</span>
             </div>
             <div class="bar-bg"><div class="bar-fill" id="activeAddressesBar" style="width:72%;"></div></div>
           </div>
-          <!-- 5. Доминирование BTC -->
           <div class="metric">
             <div class="label-row">
-              <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> Доминирование BTC</span>
+              <span><i class="fab fa-bitcoin" style="color:var(--accent);"></i> Доминирование BTC</span>
               <span id="btcDomValue">54.2%</span>
             </div>
             <div class="bar-bg"><div class="bar-fill" id="btcDomBar" style="width:54.2%;"></div></div>
           </div>
         </div>
+        <!-- Футер индекса: переключатель валюты + таймер + изменение -->
         <div class="index-footer">
-          <i class="fas fa-arrow-up" style="color:#4caf50;"></i> +1.2% за сегодня (демо-данные)
-          <div style="font-size:0.7rem; color:#6f7d90;">Данные симулированы</div>
+          <div class="currency-switch" id="currencySwitch">
+            <button class="active" data-currency="USD">USD</button>
+            <button data-currency="EUR">EUR</button>
+            <button data-currency="BTC">BTC</button>
+          </div>
+          <div class="timer">
+            <i class="fas fa-sync-alt fa-fw"></i>
+            Обновление через <span id="timerSeconds">10</span>с
+          </div>
+          <span id="changeIndicator" style="font-size:0.8rem;">
+            <i class="fas fa-arrow-up" style="color:#4caf50;"></i> +1.2%
+          </span>
         </div>
       </div>
 
@@ -404,7 +499,7 @@
   <!-- ===== КОНТАКТЫ ===== -->
   <section id="contact" class="container">
     <h2 class="section-title">Свяжитесь с нами</h2>
-    <p style="color:#9aa7b9; max-width:500px; margin:0 auto 10px;">
+    <p style="color:var(--muted-light); max-width:500px; margin:0 auto 10px;">
       Есть вопросы или предложения? Напишите нам, и мы ответим в ближайшее время.
     </p>
     <div class="contact-links">
@@ -426,156 +521,327 @@
 
   <!-- ===== СКРИПТЫ ===== -->
   <script>
-    // === ИНДЕКС COINOAXIS (здоровье и настроение) ===
-    function updateIndex() {
-      // Базовые значения (тренды)
-      const baseFearGreed = 65;
-      const baseMVRV = 1.8;
-      const baseNUPL = 0.4;
-      const baseAddresses = 850000;
-      const baseBtcDom = 54.0;
+    (function() {
+      // ============================================================
+      // 1. ТЕМА (localStorage)
+      // ============================================================
+      const themeToggle = document.getElementById('themeToggle');
+      const themeLabel = document.getElementById('themeLabel');
+      const html = document.documentElement;
 
-      // Симуляция колебаний
-      const fearGreed = Math.round(Math.max(0, Math.min(100, baseFearGreed + (Math.random() - 0.5) * 10)));
-      const mvrv = (baseMVRV + (Math.random() - 0.5) * 0.15).toFixed(2);
-      const nupl = (baseNUPL + (Math.random() - 0.5) * 0.06).toFixed(2);
-      const addresses = Math.round(baseAddresses + (Math.random() - 0.5) * 30000);
-      const btcDom = (baseBtcDom + (Math.random() - 0.5) * 1.5).toFixed(1);
-
-      // Обновляем DOM
-      document.getElementById('fearGreedValue').textContent = fearGreed;
-      document.getElementById('mvrvValue').textContent = mvrv;
-      document.getElementById('nuplValue').textContent = nupl;
-      document.getElementById('activeAddresses').textContent = addresses.toLocaleString();
-      document.getElementById('btcDomValue').textContent = btcDom + '%';
-
-      document.getElementById('fearGreedBar').style.width = fearGreed + '%';
-      document.getElementById('mvrvBar').style.width = Math.min(100, (parseFloat(mvrv) / 3 * 100)) + '%';
-      document.getElementById('nuplBar').style.width = Math.min(100, ((parseFloat(nupl) + 0.5) / 1.5 * 100)) + '%';
-      document.getElementById('activeAddressesBar').style.width = Math.min(100, (addresses / 1200000 * 100)) + '%';
-      document.getElementById('btcDomBar').style.width = parseFloat(btcDom) + '%';
-
-      // Композитный индекс
-      const weights = { fearGreed: 0.25, mvrv: 0.20, nupl: 0.20, addresses: 0.20, btcDom: 0.15 };
-      const normFear = fearGreed / 100;
-      const normMVRV = Math.min(1, parseFloat(mvrv) / 3);
-      const normNUPL = Math.min(1, (parseFloat(nupl) + 0.5) / 1.5);
-      const normAddresses = Math.min(1, addresses / 1200000);
-      const normBtc = parseFloat(btcDom) / 70;
-
-      const rawIndex = (
-        normFear * weights.fearGreed +
-        normMVRV * weights.mvrv +
-        normNUPL * weights.nupl +
-        normAddresses * weights.addresses +
-        normBtc * weights.btcDom
-      ) * 100;
-
-      const index = Math.min(100, Math.max(0, Math.round(rawIndex * 10) / 10));
-      const indexEl = document.getElementById('indexValue');
-      indexEl.textContent = index.toFixed(1);
-
-      // Метка настроения
-      const sentLabel = document.getElementById('sentimentLabel');
-      if (index >= 80) {
-        sentLabel.textContent = '🟢 Экстремально бычий';
-        sentLabel.style.background = '#4caf50';
-        sentLabel.style.color = '#fff';
-      } else if (index >= 65) {
-        sentLabel.textContent = '🟡 Бычий';
-        sentLabel.style.background = '#f7931a';
-        sentLabel.style.color = '#0b0e14';
-      } else if (index >= 45) {
-        sentLabel.textContent = '🟠 Нейтральный';
-        sentLabel.style.background = '#ffb347';
-        sentLabel.style.color = '#0b0e14';
-      } else if (index >= 25) {
-        sentLabel.textContent = '🔴 Медвежий';
-        sentLabel.style.background = '#ff6b6b';
-        sentLabel.style.color = '#fff';
-      } else {
-        sentLabel.textContent = '⛔ Экстремально медвежий';
-        sentLabel.style.background = '#d32f2f';
-        sentLabel.style.color = '#fff';
+      function setTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('coino-theme', theme);
+        themeLabel.textContent = theme === 'dark' ? 'Тёмная' : 'Светлая';
+        themeToggle.innerHTML = `<i class="fas ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}"></i> ${themeLabel.textContent}`;
       }
 
-      // Цвет главного числа
-      if (index >= 65) indexEl.style.color = '#4caf50';
-      else if (index >= 40) indexEl.style.color = '#f7931a';
-      else indexEl.style.color = '#ff6b6b';
-    }
+      const savedTheme = localStorage.getItem('coino-theme') || 'dark';
+      setTheme(savedTheme);
 
-    // === ПРОГНОЗ ОТ AXIS ===
-    function updateForecast() {
-      const indexValue = parseFloat(document.getElementById('indexValue').textContent) || 50;
-      const randomShift = (Math.random() - 0.5) * 10;
-      let direction, probability, confidence, horizon, trend, comment;
+      themeToggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
 
-      if (indexValue >= 65) {
-        direction = '🟢 БЫЧИЙ';
-        probability = Math.min(95, Math.round(70 + (indexValue - 65) * 0.8 + randomShift * 0.5));
-        trend = 'Ускорение';
-        comment = 'Индекс уверенно растёт, активность адресов увеличивается — ожидаем продолжения восходящего движения.';
-      } else if (indexValue >= 45) {
-        direction = '🟡 НЕЙТРАЛЬНЫЙ';
-        probability = Math.round(55 + (indexValue - 45) * 0.6 + randomShift * 0.5);
-        trend = 'Консолидация';
-        comment = 'Рынок консолидируется. Следим за ончейн-данными — возможен пробой в любую сторону.';
-      } else {
-        direction = '🔴 МЕДВЕЖИЙ';
-        probability = Math.min(95, Math.round(70 + (45 - indexValue) * 0.8 + randomShift * 0.5));
-        trend = 'Замедление';
-        comment = 'Индекс снижается, MVRV и NUPL указывают на перегретость — вероятна коррекция.';
+      // ============================================================
+      // 2. ПЕРЕКЛЮЧАТЕЛЬ ВАЛЮТ
+      // ============================================================
+      let currentCurrency = 'USD';
+      const currencyButtons = document.querySelectorAll('#currencySwitch button');
+      const cnoPriceSpan = document.getElementById('cnoPrice');
+
+      // Демо-курсы (в USD)
+      const RATES = {
+        USD: 1,
+        EUR: 0.92,   // 1 USD = 0.92 EUR
+        BTC: 0.0000147 // 1 USD = 0.0000147 BTC (при BTC=68000)
+      };
+      // Базовая цена CNO в USD
+      const CNO_BASE_USD = 0.42;
+
+      function updateCurrencyDisplay() {
+        const rate = RATES[currentCurrency];
+        const price = CNO_BASE_USD * rate;
+        let symbol = '';
+        if (currentCurrency === 'USD') symbol = '$';
+        else if (currentCurrency === 'EUR') symbol = '€';
+        else if (currentCurrency === 'BTC') symbol = '₿';
+        cnoPriceSpan.textContent = (currentCurrency === 'BTC') ? price.toFixed(8) : price.toFixed(2);
+        cnoPriceSpan.textContent = symbol + cnoPriceSpan.textContent;
+        // обновить активную кнопку
+        currencyButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.currency === currentCurrency);
+        });
       }
 
-      // Уверенность (симуляция)
-      const volatility = Math.round(20 + Math.random() * 40);
-      let confidenceLabel, confidenceWidth;
-      if (volatility < 35) {
-        confidenceLabel = 'Высокая';
-        confidenceWidth = 80 + Math.random() * 15;
-      } else if (volatility < 60) {
-        confidenceLabel = 'Средняя';
-        confidenceWidth = 50 + Math.random() * 25;
-      } else {
-        confidenceLabel = 'Низкая';
-        confidenceWidth = 25 + Math.random() * 20;
+      currencyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentCurrency = btn.dataset.currency;
+          updateCurrencyDisplay();
+        });
+      });
+
+      // ============================================================
+      // 3. АНИМИРОВАННЫЙ СЧЁТЧИК
+      // ============================================================
+      // Функция плавного изменения числа
+      function animateNumber(element, target, decimals = 1, prefix = '', suffix = '') {
+        const start = parseFloat(element.textContent.replace(/[^0-9.]/g, '')) || 0;
+        const duration = 800;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // easeOutCubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = start + (target - start) * eased;
+          element.textContent = prefix + current.toFixed(decimals) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+          else element.textContent = prefix + target.toFixed(decimals) + suffix;
+        }
+        requestAnimationFrame(update);
       }
 
-      const horizons = ['24 часа', '3 дня', '5 дней', '1 неделя'];
-      horizon = horizons[Math.floor(Math.random() * horizons.length)];
+      // ============================================================
+      // 4. ГРАФИК ИНДЕКСА (Chart.js)
+      // ============================================================
+      const ctx = document.getElementById('indexChart').getContext('2d');
+      // Генерируем 7 дней истории (начальные значения)
+      const historyLength = 7;
+      let history = [];
+      for (let i = 0; i < historyLength; i++) {
+        history.push(50 + Math.random() * 30);
+      }
 
-      // Обновляем DOM
-      document.getElementById('forecastDirection').textContent = direction;
-      document.getElementById('forecastProbability').textContent = probability;
-      document.getElementById('confidenceLabel').textContent = confidenceLabel;
-      document.getElementById('confidenceBar').style.width = confidenceWidth + '%';
-      document.getElementById('forecastHorizon').textContent = horizon;
-      document.getElementById('forecastTrend').textContent = trend;
-      document.getElementById('forecastComment').textContent = comment;
+      const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['6д', '5д', '4д', '3д', '2д', '1д', 'сегодня'],
+          datasets: [{
+            label: 'Индекс',
+            data: history,
+            borderColor: '#f7931a',
+            backgroundColor: 'rgba(247,147,26,0.1)',
+            borderWidth: 2,
+            tension: 0.3,
+            pointRadius: 2,
+            pointBackgroundColor: '#f7931a',
+            fill: true,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { display: false } },
+            y: { grid: { display: false }, ticks: { display: false } }
+          },
+          interaction: { intersect: false, mode: 'index' }
+        }
+      });
 
-      // Цвет направления
-      const dirEl = document.getElementById('forecastDirection');
-      if (direction.includes('БЫЧИЙ')) dirEl.style.color = '#4caf50';
-      else if (direction.includes('НЕЙТРАЛЬНЫЙ')) dirEl.style.color = '#ffb347';
-      else dirEl.style.color = '#ff6b6b';
+      // ============================================================
+      // 5. ОБНОВЛЕНИЕ ДАННЫХ (индекс + прогноз)
+      // ============================================================
+      let timerSeconds = 10;
+      const timerEl = document.getElementById('timerSeconds');
 
-      // Цвет бара уверенности
-      const bar = document.getElementById('confidenceBar');
-      if (confidenceWidth > 70) bar.style.background = '#4caf50';
-      else if (confidenceWidth > 45) bar.style.background = '#f7931a';
-      else bar.style.background = '#ff6b6b';
-    }
+      function updateIndex() {
+        // Базовые значения (тренды)
+        const baseFearGreed = 65;
+        const baseMVRV = 1.8;
+        const baseNUPL = 0.4;
+        const baseAddresses = 850000;
+        const baseBtcDom = 54.0;
 
-    // === ЗАПУСК ===
-    function updateAll() {
+        // Симуляция колебаний
+        const fearGreed = Math.round(Math.max(0, Math.min(100, baseFearGreed + (Math.random() - 0.5) * 10)));
+        const mvrv = (baseMVRV + (Math.random() - 0.5) * 0.15);
+        const nupl = (baseNUPL + (Math.random() - 0.5) * 0.06);
+        const addresses = Math.round(baseAddresses + (Math.random() - 0.5) * 30000);
+        const btcDom = (baseBtcDom + (Math.random() - 0.5) * 1.5);
+
+        // Обновляем DOM с анимацией
+        animateNumber(document.getElementById('fearGreedValue'), fearGreed, 0);
+        animateNumber(document.getElementById('mvrvValue'), mvrv, 2);
+        animateNumber(document.getElementById('nuplValue'), nupl, 2);
+        animateNumber(document.getElementById('btcDomValue'), btcDom, 1, '', '%');
+
+        // Активные адреса — форматируем с запятыми
+        const addrEl = document.getElementById('activeAddresses');
+        const newAddr = addresses.toLocaleString();
+        if (addrEl.textContent !== newAddr) {
+          addrEl.textContent = newAddr;
+        }
+
+        // Прогресс-бары
+        document.getElementById('fearGreedBar').style.width = fearGreed + '%';
+        document.getElementById('mvrvBar').style.width = Math.min(100, (mvrv / 3 * 100)) + '%';
+        document.getElementById('nuplBar').style.width = Math.min(100, ((nupl + 0.5) / 1.5 * 100)) + '%';
+        document.getElementById('activeAddressesBar').style.width = Math.min(100, (addresses / 1200000 * 100)) + '%';
+        document.getElementById('btcDomBar').style.width = btcDom + '%';
+
+        // Композитный индекс
+        const weights = { fearGreed: 0.25, mvrv: 0.20, nupl: 0.20, addresses: 0.20, btcDom: 0.15 };
+        const normFear = fearGreed / 100;
+        const normMVRV = Math.min(1, mvrv / 3);
+        const normNUPL = Math.min(1, (nupl + 0.5) / 1.5);
+        const normAddresses = Math.min(1, addresses / 1200000);
+        const normBtc = btcDom / 70;
+
+        const rawIndex = (
+          normFear * weights.fearGreed +
+          normMVRV * weights.mvrv +
+          normNUPL * weights.nupl +
+          normAddresses * weights.addresses +
+          normBtc * weights.btcDom
+        ) * 100;
+
+        const index = Math.min(100, Math.max(0, Math.round(rawIndex * 10) / 10));
+
+        // Обновляем главное число с анимацией
+        const indexEl = document.getElementById('indexValue');
+        const oldIndex = parseFloat(indexEl.textContent) || 0;
+        animateNumber(indexEl, index, 1);
+
+        // Обновляем историю графика
+        history.push(index);
+        if (history.length > 7) history.shift();
+        chart.data.datasets[0].data = history;
+        chart.update();
+
+        // Метка настроения
+        const sentLabel = document.getElementById('sentimentLabel');
+        if (index >= 80) {
+          sentLabel.textContent = '🟢 Экстремально бычий';
+          sentLabel.style.background = '#4caf50';
+          sentLabel.style.color = '#fff';
+        } else if (index >= 65) {
+          sentLabel.textContent = '🟡 Бычий';
+          sentLabel.style.background = '#f7931a';
+          sentLabel.style.color = '#0b0e14';
+        } else if (index >= 45) {
+          sentLabel.textContent = '🟠 Нейтральный';
+          sentLabel.style.background = '#ffb347';
+          sentLabel.style.color = '#0b0e14';
+        } else if (index >= 25) {
+          sentLabel.textContent = '🔴 Медвежий';
+          sentLabel.style.background = '#ff6b6b';
+          sentLabel.style.color = '#fff';
+        } else {
+          sentLabel.textContent = '⛔ Экстремально медвежий';
+          sentLabel.style.background = '#d32f2f';
+          sentLabel.style.color = '#fff';
+        }
+
+        // Цвет главного числа
+        if (index >= 65) indexEl.style.color = '#4caf50';
+        else if (index >= 40) indexEl.style.color = '#f7931a';
+        else indexEl.style.color = '#ff6b6b';
+
+        // Индикатор изменения (сравниваем с предыдущим значением)
+        const changeEl = document.getElementById('changeIndicator');
+        const change = index - (history.length > 1 ? history[history.length-2] : index);
+        if (change > 0) {
+          changeEl.innerHTML = `<i class="fas fa-arrow-up" style="color:#4caf50;"></i> +${change.toFixed(1)}%`;
+        } else if (change < 0) {
+          changeEl.innerHTML = `<i class="fas fa-arrow-down" style="color:#ff6b6b;"></i> ${change.toFixed(1)}%`;
+        } else {
+          changeEl.innerHTML = `<i class="fas fa-minus" style="color:#f7931a;"></i> 0.0%`;
+        }
+
+        // ============================================================
+        // 6. ПРОГНОЗ
+        // ============================================================
+        const randomShift = (Math.random() - 0.5) * 10;
+        let direction, probability, confidence, horizon, trend, comment;
+
+        if (index >= 65) {
+          direction = '🟢 БЫЧИЙ';
+          probability = Math.min(95, Math.round(70 + (index - 65) * 0.8 + randomShift * 0.5));
+          trend = 'Ускорение';
+          comment = 'Индекс уверенно растёт, активность адресов увеличивается — ожидаем продолжения восходящего движения.';
+        } else if (index >= 45) {
+          direction = '🟡 НЕЙТРАЛЬНЫЙ';
+          probability = Math.round(55 + (index - 45) * 0.6 + randomShift * 0.5);
+          trend = 'Консолидация';
+          comment = 'Рынок консолидируется. Следим за ончейн-данными — возможен пробой в любую сторону.';
+        } else {
+          direction = '🔴 МЕДВЕЖИЙ';
+          probability = Math.min(95, Math.round(70 + (45 - index) * 0.8 + randomShift * 0.5));
+          trend = 'Замедление';
+          comment = 'Индекс снижается, MVRV и NUPL указывают на перегретость — вероятна коррекция.';
+        }
+
+        // Уверенность (симуляция)
+        const volatility = Math.round(20 + Math.random() * 40);
+        let confidenceLabel, confidenceWidth;
+        if (volatility < 35) {
+          confidenceLabel = 'Высокая';
+          confidenceWidth = 80 + Math.random() * 15;
+        } else if (volatility < 60) {
+          confidenceLabel = 'Средняя';
+          confidenceWidth = 50 + Math.random() * 25;
+        } else {
+          confidenceLabel = 'Низкая';
+          confidenceWidth = 25 + Math.random() * 20;
+        }
+
+        const horizons = ['24 часа', '3 дня', '5 дней', '1 неделя'];
+        horizon = horizons[Math.floor(Math.random() * horizons.length)];
+
+        // Обновляем DOM прогноза
+        const dirEl = document.getElementById('forecastDirection');
+        dirEl.textContent = direction;
+        if (direction.includes('БЫЧИЙ')) dirEl.style.color = '#4caf50';
+        else if (direction.includes('НЕЙТРАЛЬНЫЙ')) dirEl.style.color = '#ffb347';
+        else dirEl.style.color = '#ff6b6b';
+
+        document.getElementById('forecastProbability').textContent = probability;
+        document.getElementById('confidenceLabel').textContent = confidenceLabel;
+        document.getElementById('confidenceBar').style.width = confidenceWidth + '%';
+        document.getElementById('forecastHorizon').textContent = horizon;
+        document.getElementById('forecastTrend').textContent = trend;
+        document.getElementById('forecastComment').textContent = comment;
+
+        // Цвет бара уверенности
+        const bar = document.getElementById('confidenceBar');
+        if (confidenceWidth > 70) bar.style.background = '#4caf50';
+        else if (confidenceWidth > 45) bar.style.background = '#f7931a';
+        else bar.style.background = '#ff6b6b';
+
+        // ============================================================
+        // 7. ТАЙМЕР
+        // ============================================================
+        timerSeconds = 10;
+        timerEl.textContent = timerSeconds;
+      }
+
+      // ============================================================
+      // 8. ЗАПУСК ЦИКЛА ОБНОВЛЕНИЙ
+      // ============================================================
+      // Первый запуск
       updateIndex();
-      updateForecast();
-    }
 
-    // Первый запуск и интервал
-    updateAll();
-    setInterval(updateAll, 10000);
+      // Интервал обновления данных (10 секунд)
+      setInterval(updateIndex, 10000);
+
+      // Таймер обратного отсчёта (обновляем каждую секунду)
+      setInterval(() => {
+        timerSeconds = Math.max(0, timerSeconds - 1);
+        timerEl.textContent = timerSeconds;
+      }, 1000);
+
+      // ============================================================
+      // 9. ПЕРЕСЧЁТ ВАЛЮТЫ ПРИ СМЕНЕ (уже есть)
+      // ============================================================
+      // Первоначальный вывод курса
+      updateCurrencyDisplay();
+
+    })();
   </script>
 </body>
 </html>
