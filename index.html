@@ -1,130 +1,412 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coino.info — блокчейн-экосистема</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0b1120 0%, #1a2332 100%);
-            color: #e8edf5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 720px;
-        }
-        .logo {
-            margin-bottom: 30px;
-        }
-        .logo img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #3b82f6;
-            box-shadow: 0 0 40px rgba(59,130,246,0.3);
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-        .description {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #cbd5e1;
-            margin-bottom: 40px;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #3b82f6;
-            color: #fff;
-            padding: 16px 42px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background 0.3s, transform 0.1s;
-            box-shadow: 0 8px 30px rgba(59,130,246,0.4);
-        }
-        .cta-button:hover {
-            background: #2563eb;
-            transform: scale(1.03);
-        }
-        .links {
-            margin-top: 45px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            border-bottom: 1px solid transparent;
-        }
-        .links a:hover {
-            color: #60a5fa;
-            border-bottom-color: #60a5fa;
-        }
-        .footer {
-            margin-top: 60px;
-            font-size: 0.85rem;
-            color: #475569;
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coino — digital currency & ecosystem</title>
+  <meta name="description" content="Coino (CNO) — decentralized cryptocurrency and CoinoAxis educational project.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ===== CSS-VARIABLES ===== */
+    :root {
+      --bg-primary: #0b0e14;
+      --bg-secondary: #111822;
+      --text-primary: #eef2f6;
+      --text-secondary: #94a3b8;
+      --text-muted: #6f7d90;
+      --accent: #f7931a;
+      --accent-hover: #ffb347;
+      --card-bg: #0f151f;
+      --card-border: #1e2a3a;
+      --shadow: 0 20px 50px rgba(0,0,0,0.7);
+      --glass-bg: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+    }
+    [data-theme="light"] {
+      --bg-primary: #f0f2f6;
+      --bg-secondary: #ffffff;
+      --text-primary: #0b0e14;
+      --text-secondary: #2d3748;
+      --text-muted: #718096;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --shadow: 0 20px 50px rgba(0,0,0,0.08);
+      --glass-bg: rgba(0,0,0,0.02);
+      --glass-border: rgba(0,0,0,0.06);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background 0.4s, color 0.4s;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--glass-border);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(145deg, #fff 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo span { -webkit-text-fill-color: var(--accent); }
+    nav { display: flex; gap: 30px; flex-wrap: wrap; align-items: center; }
+    nav a {
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    nav a:hover { color: var(--accent); }
+    nav a:hover::after { width: 100%; }
+    .theme-toggle {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 8px 18px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .theme-toggle:hover { border-color: var(--accent); }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(247,147,26,0.06) 0%, transparent 60%);
+      animation: pulseGlow 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes pulseGlow {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.2); opacity: 1; }
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: 4.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0b0e14;
+      padding: 16px 42px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(247,147,26,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(247,147,26,0.5);
+    }
+    .btn-secondary {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      padding: 16px 42px;
+      border-radius: 60px;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-secondary:hover {
+      background: rgba(247,147,26,0.1);
+      border-color: var(--accent);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid var(--glass-border);
+    }
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 50px;
+      font-size: 1.1rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .grid-2 .text-block h3 { font-size: 2rem; margin-bottom: 20px; }
+    .grid-2 .text-block p { color: var(--text-secondary); margin-bottom: 16px; }
+    .grid-2 .text-block ul { list-style: none; }
+    .grid-2 .text-block ul li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .grid-2 .text-block ul li i { color: var(--accent); width: 24px; font-size: 1.2rem; }
+    .grid-2 .image-block {
+      background: var(--glass-bg);
+      border-radius: 40px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+      transition: 0.4s;
+    }
+    .grid-2 .image-block:hover { border-color: var(--accent); }
+    .grid-2 .image-block i { font-size: 5rem; color: var(--accent); margin-bottom: 16px; }
+    .grid-2 .image-block p { font-weight: 600; }
+
+    .reverse .grid-2 { direction: rtl; }
+    .reverse .grid-2 > * { direction: ltr; }
+
+    /* ===== CONTACT ===== */
+    #contact { text-align: center; padding: 60px 0; }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .contact-links a {
+      background: var(--glass-bg);
+      padding: 14px 32px;
+      border-radius: 60px;
+      border: 1px solid var(--glass-border);
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .contact-links a:hover { border-color: var(--accent); background: rgba(247,147,26,0.05); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--glass-border);
+      padding: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    footer .social a {
+      margin-left: 20px;
+      font-size: 1.3rem;
+      transition: 0.3s;
+    }
+    footer .social a:hover { color: var(--accent); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.8rem; }
+      .grid-2 { grid-template-columns: 1fr; text-align: center; }
+      .grid-2 .text-block ul li { justify-content: center; }
+      .reverse .grid-2 { direction: ltr; }
+      header { flex-direction: column; align-items: stretch; }
+      nav { justify-content: center; }
+      .section-title { font-size: 2rem; }
+      .btn-primary, .btn-secondary { padding: 14px 28px; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <!-- Замените src на свой логотип, если есть -->
-            <img src="https://scan.coino.info/assets/images/CNOV2.png" alt="Coino">
-        </div>
-        <h1>Coino</h1>
-        <div class="subtitle">Децентрализованная блокчейн-платформа</div>
-        <p class="description">
-            Coino — это инновационный блокчейн-проект, ориентированный на безопасность, скорость и прозрачность.
-            Исследуйте блоки, транзакции и богатые кошельки в нашем обозревателе.
-        </p>
-        <a href="https://scan.coino.info" class="cta-button">🚀 Перейти в обозреватель</a>
-        <div class="links">
-            <a href="https://github.com/ваш_репозиторий" target="_blank">GitHub</a>
-            <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
-            <a href="mailto:ваш_email@coino.info">Email</a>
-            <a href="https://scan.coino.info/aboutcno.html">О проекте</a>
-        </div>
-        <div class="footer">
-            &copy; 2026 Coino.info — Все права защищены
-        </div>
+  <header class="container">
+    <div class="logo">Coino<span>.</span></div>
+    <nav>
+      <a href="https://scan.coino.info">Explorer</a>
+      <a href="#about">About Coino</a>
+      <a href="#axis">CoinoAxis</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Digital currency <br><span class="highlight">& knowledge ecosystem</span></h1>
+      <p>Coino (CNO) is a decentralized cryptocurrency, and CoinoAxis is an educational project that helps you explore blockchain and financial technologies.</p>
+      <div class="cta-group">
+        <a href="https://scan.coino.info" class="btn-primary"><i class="fas fa-arrow-right"></i> Go to Explorer</a>
+        <a href="#axis" class="btn-secondary"><i class="fas fa-graduation-cap"></i> Learn about CoinoAxis</a>
+      </div>
     </div>
+  </section>
+
+  <!-- ABOUT COINO -->
+  <section id="about" class="section container">
+    <h2 class="section-title">What is Coino?</h2>
+    <p class="section-sub">A modern digital currency built for fast, secure, and low‑cost transactions.</p>
+    <div class="grid-2">
+      <div class="text-block">
+        <h3>CNO Cryptocurrency</h3>
+        <p>Coino (CNO) is a decentralized cryptocurrency based on its own blockchain. It enables instant transfers with minimal fees and high privacy.</p>
+        <ul>
+          <li><i class="fas fa-bolt"></i> Transaction speed — up to 10,000 TPS</li>
+          <li><i class="fas fa-shield-alt"></i> Consensus — Proof of Stake (PoS)</li>
+          <li><i class="fas fa-coins"></i> Total supply — 100 million CNO</li>
+          <li><i class="fas fa-code"></i> Smart contract support</li>
+        </ul>
+      </div>
+      <div class="image-block">
+        <i class="fas fa-coins"></i>
+        <p style="font-size:2.5rem; font-weight:800; color:var(--accent);">CNO</p>
+        <p style="color:var(--text-secondary);">Active since 2024</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COINOAXIS -->
+  <section id="axis" class="section container reverse">
+    <h2 class="section-title">CoinoAxis Educational Project</h2>
+    <p class="section-sub">A platform for learning blockchain, crypto-economics, and financial literacy.</p>
+    <div class="grid-2">
+      <div class="image-block">
+        <i class="fas fa-graduation-cap"></i>
+        <p style="font-weight:700;">Learn by doing</p>
+        <p style="color:var(--text-secondary); font-size:0.95rem;">Free courses, webinars, simulations</p>
+      </div>
+      <div class="text-block">
+        <h3>What is CoinoAxis?</h3>
+        <p>CoinoAxis is an educational initiative created by the Coino development team. It helps beginners and professionals understand decentralized technologies.</p>
+        <ul>
+          <li><i class="fas fa-book"></i> Courses from basics to advanced</li>
+          <li><i class="fas fa-users"></i> Community of like‑minded people</li>
+          <li><i class="fas fa-project-diagram"></i> Hands‑on tasks and hackathons</li>
+          <li><i class="fas fa-certificate"></i> Certification upon completion</li>
+        </ul>
+        <p style="margin-top:20px;"><strong>Goal:</strong> Train 10,000 specialists by 2027.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <h2 class="section-title" style="font-size:2.2rem;">Get in touch</h2>
+    <p style="color:var(--text-secondary); max-width:500px; margin:0 auto 10px;">Have questions or suggestions? Write to us — we’ll reply shortly.</p>
+    <div class="contact-links">
+      <a href="mailto:info@coino.info"><i class="fas fa-envelope"></i> info@coino.info</a>
+      <a href="#"><i class="fab fa-telegram"></i> @coino_chat</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p>&copy; 2026 Coino.info — All rights reserved.</p>
+    <div class="social">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const themeToggle = document.getElementById('themeToggle');
+      const themeLabel = document.getElementById('themeLabel');
+      const html = document.documentElement;
+
+      function setTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('coino-theme', theme);
+        themeLabel.textContent = theme === 'dark' ? 'Dark' : 'Light';
+        themeToggle.innerHTML = `<i class="fas ${theme === 'dark' ? 'fa-moon' : 'fa-sun'}"></i> ${themeLabel.textContent}`;
+      }
+
+      const saved = localStorage.getItem('coino-theme') || 'dark';
+      setTheme(saved);
+
+      themeToggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    })();
+  </script>
 </body>
 </html>
