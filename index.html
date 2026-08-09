@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ===== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ===== */
+
     :root {
       --bg: #0b0e14;
       --text: #eef2f6;
@@ -49,7 +49,6 @@
       position: relative;
     }
 
-    /* ===== АНИМИРОВАННЫЙ ГРАДИЕНТНЫЙ ФОН ===== */
     .animated-bg {
       position: fixed;
       top: 0;
@@ -67,7 +66,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ===== ЧАСТИЦЫ (звёздочки) ===== */
     .particles {
       position: fixed;
       top: 0;
@@ -94,7 +92,6 @@
       100% { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
 
-    /* ===== ОСНОВНОЙ КОНТЕЙНЕР (стекло) ===== */
     .container {
       position: relative;
       z-index: 2;
@@ -115,7 +112,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== ГЕРОЙ ===== */
     .hero {
       display: flex;
       flex-direction: column;
@@ -182,7 +178,7 @@
     }
     .btn-primary i { margin-right: 10px; }
 
-    /* ===== ТРИ КАРТОЧКИ ===== */
+    
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -221,7 +217,6 @@
       font-size: 0.95rem;
     }
 
-    /* ===== НИЖНИЕ ССЫЛКИ ===== */
     .bottom-links {
       display: flex;
       flex-wrap: wrap;
@@ -248,7 +243,6 @@
       transform: translateY(-2px);
     }
 
-    /* ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ===== */
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -281,16 +275,12 @@
 </head>
 <body>
 
-  <!-- ===== АНИМИРОВАННЫЙ ФОН ===== -->
   <div class="animated-bg"></div>
 
-  <!-- ===== ЧАСТИЦЫ (звёзды) ===== -->
   <div class="particles" id="particles"></div>
 
-  <!-- ===== КНОПКА ТЕМЫ ===== -->
   <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
 
-  <!-- ===== ОСНОВНОЙ БЛОК ===== -->
   <div class="container">
     <div class="hero">
         <div class="logo">
@@ -331,7 +321,7 @@
 
   <script>
     (function() {
-      // ===== ТЕМА =====
+      
       const toggle = document.getElementById('themeToggle');
       const label = document.getElementById('themeLabel');
       const html = document.documentElement;
@@ -351,7 +341,6 @@
         setTheme(current === 'dark' ? 'light' : 'dark');
       });
 
-      // ===== ГЕНЕРАЦИЯ ЧАСТИЦ =====
       const particlesContainer = document.getElementById('particles');
       const count = 80;
       for (let i = 0; i < count; i++) {
