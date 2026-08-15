@@ -379,7 +379,7 @@
     <i class="fas fa-moon moon"></i>
   </div>
 
-  <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span id="themeLabel">Dark</span></button>
+  <button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i> <span id="themeLabel">Light</span></button>
 
   <div class="container">
     <div class="hero">
@@ -435,9 +435,11 @@
         html.setAttribute('data-theme', theme);
         localStorage.setItem('coino-theme', theme);
 
-        // Update button text and icon
-        label.textContent = isDark ? 'Dark' : 'Light';
-        toggle.innerHTML = `<i class="fas ${isDark ? 'fa-moon' : 'fa-sun'}"></i> ${label.textContent}`;
+        // Update button text and icon - SHOW OPPOSITE of current theme
+        // When in dark mode, show "Light" (click to switch to light)
+        // When in light mode, show "Dark" (click to switch to dark)
+        label.textContent = isDark ? 'Light' : 'Dark';
+        toggle.innerHTML = `<i class="fas ${isDark ? 'fa-sun' : 'fa-moon'}"></i> ${label.textContent}`;
       }
 
       // Load saved theme or default to dark
