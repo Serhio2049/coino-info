@@ -38,8 +38,10 @@
       --card-bg: rgba(17, 24, 34, 0.75);
       --shadow: 0 8px 30px rgba(0,0,0,0.6);
       --btn-shadow: 0 6px 20px rgba(247,147,26,0.35);
-      /* Фоновое изображение для ночи */
-      --bg-image: url('night-bg.jpg');
+      /* Night gradient colors */
+      --gradient-color1: #0b0e14;
+      --gradient-color2: #1a2332;
+      --gradient-color3: #0b0e14;
     }
     [data-theme="light"] {
       --bg: #f4f6f9;
@@ -50,8 +52,10 @@
       --card-bg: rgba(255,255,255,0.85);
       --shadow: 0 8px 30px rgba(0,0,0,0.08);
       --btn-shadow: 0 6px 20px rgba(247,147,26,0.2);
-      /* Фоновое изображение для дня */
-      --bg-image: url('day-bg.jpg');
+      /* Day gradient colors */
+      --gradient-color1: #fef3c7;
+      --gradient-color2: #fde68a;
+      --gradient-color3: #fcd34d;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -60,7 +64,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      transition: background 0.8s ease, color 0.3s;
+      transition: color 0.5s ease;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -70,7 +74,7 @@
       position: relative;
     }
 
-    /* Анимированный фон с картинкой */
+    /* Animated gradient background */
     .animated-bg {
       position: fixed;
       top: 0;
@@ -78,45 +82,48 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background-image: var(--bg-image);
-      background-size: cover;
-      background-position: center;
-      transition: background-image 1.2s ease-in-out, opacity 1.2s ease-in-out;
-      animation: none;
+      background: linear-gradient(135deg, var(--gradient-color1) 0%, var(--gradient-color2) 50%, var(--gradient-color3) 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* Анимация смены дня/ночи — плавное изменение */
-    .animated-bg::after {
-      content: '';
-      position: absolute;
+    /* Transition overlay for smooth theme switching */
+    .theme-transition-overlay {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0);
-      transition: background 1.2s ease-in-out;
+      z-index: 1;
       pointer-events: none;
+      background: transparent;
+      transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    [data-theme="dark"] .animated-bg::after {
-      background: rgba(0,0,0,0.5);
+    [data-theme="dark"] .theme-transition-overlay {
+      background: rgba(0,0,0,0);
     }
-    [data-theme="light"] .animated-bg::after {
-      background: rgba(255,255,255,0.1);
+    [data-theme="light"] .theme-transition-overlay {
+      background: rgba(255, 215, 0, 0.05);
     }
 
-    /* Дополнительная анимация — солнце/луна */
+    /* Day/Night indicator */
     .day-night-indicator {
       position: fixed;
       top: 80px;
       right: 24px;
-      font-size: 2rem;
+      font-size: 2.5rem;
       z-index: 10;
-      opacity: 0.6;
       transition: all 0.8s ease;
       pointer-events: none;
     }
     .day-night-indicator i {
-      transition: transform 0.8s ease, opacity 0.8s ease;
+      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
       position: absolute;
       right: 0;
       top: 0;
@@ -125,11 +132,13 @@
       opacity: 0;
       transform: rotate(-90deg) scale(0.5);
       color: #fbbf24;
+      filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5));
     }
     .day-night-indicator .moon {
       opacity: 1;
       transform: rotate(0deg) scale(1);
       color: #93c5fd;
+      filter: drop-shadow(0 0 20px rgba(147, 197, 253, 0.3));
     }
     [data-theme="light"] .day-night-indicator .sun {
       opacity: 1;
@@ -152,22 +161,24 @@
     }
     .particle {
       position: absolute;
-      width: 3px;
-      height: 3px;
-      background: rgba(255,255,255,0.4);
       border-radius: 50%;
       animation: float linear infinite;
       opacity: 0;
-      transition: background 0.8s ease;
+      transition: background 1.5s ease, box-shadow 1.5s ease;
+    }
+    [data-theme="dark"] .particle {
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
     [data-theme="light"] .particle {
-      background: rgba(0,0,0,0.2);
+      background: rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
     @keyframes float {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 0.8; }
-      90% { opacity: 0.8; }
-      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+      0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }
     }
 
     .container {
@@ -182,7 +193,7 @@
       padding: 50px 40px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      transition: 0.8s ease;
+      transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       animation: fadeInUp 1s ease-out;
     }
     @keyframes fadeInUp {
@@ -211,7 +222,7 @@
       font-size: 2.8rem;
       font-weight: 800;
       color: var(--accent);
-      transition: transform 0.6s ease;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
       cursor: default;
       animation: pulseGlow 4s ease-in-out infinite alternate;
     }
@@ -345,7 +356,7 @@
       .container { padding: 30px 20px; }
       .hero h1 { font-size: 2.6rem; }
       .features { grid-template-columns: 1fr; }
-      .day-night-indicator { top: 70px; right: 16px; font-size: 1.5rem; }
+      .day-night-indicator { top: 70px; right: 16px; font-size: 2rem; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
@@ -354,11 +365,15 @@
 </head>
 <body>
 
+  <!-- Animated gradient background -->
   <div class="animated-bg" id="animatedBg"></div>
+  
+  <!-- Transition overlay for smooth theme switching -->
+  <div class="theme-transition-overlay" id="transitionOverlay"></div>
 
   <div class="particles" id="particles"></div>
 
-  <!-- Индикатор дня/ночи (солнце/луна) -->
+  <!-- Day/Night indicator -->
   <div class="day-night-indicator" id="dayNightIndicator">
     <i class="fas fa-sun sun"></i>
     <i class="fas fa-moon moon"></i>
@@ -413,53 +428,49 @@
       const html = document.documentElement;
       const animatedBg = document.getElementById('animatedBg');
 
-      // Картинки для фона (замените на свои ссылки)
-      const BG_IMAGES = {
-        dark: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80', // ночное небо
-        light: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80' // дневное небо
-      };
-
       function setTheme(theme) {
-        // Устанавливаем data-theme
+        const isDark = theme === 'dark';
+        
+        // Set data-theme attribute
         html.setAttribute('data-theme', theme);
         localStorage.setItem('coino-theme', theme);
 
-        // Меняем текст и иконку на кнопке
-        const isDark = theme === 'dark';
+        // Update button text and icon
         label.textContent = isDark ? 'Dark' : 'Light';
         toggle.innerHTML = `<i class="fas ${isDark ? 'fa-moon' : 'fa-sun'}"></i> ${label.textContent}`;
-
-        // Меняем фоновую картинку с плавной анимацией
-        animatedBg.style.opacity = '0';
-        setTimeout(() => {
-          animatedBg.style.backgroundImage = `url('${isDark ? BG_IMAGES.dark : BG_IMAGES.light}')`;
-          animatedBg.style.opacity = '1';
-        }, 150);
       }
 
-      // Загружаем сохранённую тему или тёмную по умолчанию
+      // Load saved theme or default to dark
       const saved = localStorage.getItem('coino-theme') || 'dark';
       setTheme(saved);
 
-      // Переключение темы
+      // Toggle theme on click
       toggle.addEventListener('click', () => {
         const current = html.getAttribute('data-theme');
-        setTheme(current === 'dark' ? 'light' : 'dark');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        
+        // Restart gradient animation for a nice effect
+        animatedBg.style.animation = 'none';
+        setTimeout(() => {
+          animatedBg.style.animation = 'gradientShift 15s ease infinite';
+        }, 10);
+        
+        setTheme(newTheme);
       });
 
-      // Создаём частицы
+      // Create floating particles
       const particlesContainer = document.getElementById('particles');
       const count = 80;
       for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
-        const size = Math.random() * 4 + 2;
+        const size = Math.random() * 5 + 2;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
         particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
-        particle.style.animationDelay = (Math.random() * 15) + 's';
-        particle.style.opacity = Math.random() * 0.6 + 0.2;
+        particle.style.animationDuration = (Math.random() * 25 + 15) + 's';
+        particle.style.animationDelay = (Math.random() * 20) + 's';
+        particle.style.opacity = Math.random() * 0.7 + 0.2;
         particlesContainer.appendChild(particle);
       }
     })();
