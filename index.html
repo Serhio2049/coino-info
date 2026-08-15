@@ -112,43 +112,6 @@
       background: rgba(245, 237, 226, 0.15);
     }
 
-    /* Day/Night indicator */
-    .day-night-indicator {
-      position: fixed;
-      top: 80px;
-      right: 24px;
-      font-size: 2.5rem;
-      z-index: 10;
-      transition: all 0.8s ease;
-      pointer-events: none;
-    }
-    .day-night-indicator i {
-      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .day-night-indicator .sun {
-      opacity: 0;
-      transform: rotate(-90deg) scale(0.5);
-      color: #f7b731;
-      filter: drop-shadow(0 0 30px rgba(247, 183, 49, 0.4));
-    }
-    .day-night-indicator .moon {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-      color: #b0c4de;
-      filter: drop-shadow(0 0 30px rgba(176, 196, 222, 0.3));
-    }
-    [data-theme="light"] .day-night-indicator .sun {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
-    [data-theme="light"] .day-night-indicator .moon {
-      opacity: 0;
-      transform: rotate(90deg) scale(0.5);
-    }
-
     .particles {
       position: fixed;
       top: 0;
@@ -337,26 +300,40 @@
       top: 20px;
       right: 24px;
       background: var(--card-bg);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 30px;
-      padding: 8px 18px;
+      padding: 10px 22px;
       color: var(--text);
       cursor: pointer;
       font-size: 0.9rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       transition: 0.3s;
       z-index: 10;
+      letter-spacing: 0.3px;
     }
-    .theme-toggle:hover { border-color: var(--accent); transform: scale(1.05); }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(247,147,26,0.15);
+    }
+    .theme-toggle i {
+      font-size: 1.1rem;
+      transition: transform 0.4s ease;
+    }
+    .theme-toggle:hover i {
+      transform: rotate(20deg);
+    }
 
     @media (max-width: 768px) {
       .container { padding: 30px 20px; }
       .hero h1 { font-size: 2.6rem; }
       .features { grid-template-columns: 1fr; }
-      .day-night-indicator { top: 70px; right: 16px; font-size: 2rem; }
+      .theme-toggle { padding: 8px 16px; font-size: 0.8rem; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
@@ -373,13 +350,10 @@
 
   <div class="particles" id="particles"></div>
 
-  <!-- Day/Night indicator -->
-  <div class="day-night-indicator" id="dayNightIndicator">
-    <i class="fas fa-sun sun"></i>
-    <i class="fas fa-moon moon"></i>
-  </div>
-
-  <button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i> <span id="themeLabel">Light</span></button>
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-sun"></i>
+    <span id="themeLabel">Light</span>
+  </button>
 
   <div class="container">
     <div class="hero">
@@ -437,7 +411,7 @@
 
         // Update button text and icon - SHOW OPPOSITE of current theme
         label.textContent = isDark ? 'Light' : 'Dark';
-        toggle.innerHTML = `<i class="fas ${isDark ? 'fa-sun' : 'fa-moon'}"></i> ${label.textContent}`;
+        toggle.innerHTML = `<i class="fas ${isDark ? 'fa-sun' : 'fa-moon'}"></i> <span id="themeLabel">${label.textContent}</span>`;
       }
 
       // Load saved theme or default to dark
