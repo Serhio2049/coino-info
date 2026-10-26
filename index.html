@@ -12,19 +12,24 @@
 </script>
   
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coino — decentralized digital currency for fast, low-cost global payments and blockchain education.">
+  <meta name="theme-color" content="#0b0e14">
+  <meta property="og:title" content="Coino — next-gen digital currency">
+  <meta property="og:description" content="Decentralized digital currency for fast, low-cost global payments and blockchain education.">
+  <meta property="og:image" content="https://coino.info/CNOV2.png">
   <title>Coino — next‑gen digital currency</title>
 
-  <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
 
     :root {
@@ -59,7 +64,7 @@
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
-    body {
+       body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -67,13 +72,10 @@
       transition: color 0.5s ease;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
       padding: 20px;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
-
     /* Animated gradient background */
     .animated-bg {
       position: fixed;
@@ -149,6 +151,7 @@
       z-index: 2;
       max-width: 1000px;
       width: 100%;
+      margin: auto;
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -335,6 +338,10 @@
       .features { grid-template-columns: 1fr; }
       .theme-toggle { padding: 8px 16px; font-size: 0.8rem; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      .particle, .animated-bg, .hero .logo { animation: none !important; }
+      .container, .feature-card, .bottom-links { animation: none !important; }
+    }
     @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
     }
@@ -350,8 +357,8 @@
 
   <div class="particles" id="particles"></div>
 
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-sun"></i>
+   <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+    <i class="fas fa-sun" aria-hidden="true"></i>
     <span id="themeLabel">Light</span>
   </button>
 
