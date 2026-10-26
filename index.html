@@ -1,473 +1,373 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RTH67WKMNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RTH67WKMNQ');
-</script>
-  
-  <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Coino — decentralized digital currency for fast, low-cost global payments and blockchain education.">
-  <meta name="theme-color" content="#0b0e14">
-  <meta property="og:title" content="Coino — next-gen digital currency">
-  <meta property="og:description" content="Decentralized digital currency for fast, low-cost global payments and blockchain education.">
-  <meta property="og:image" content="https://coino.info/CNOV2.png">
-  <title>Coino — next‑gen digital currency</title>
-
-   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <style>
-
-    :root {
-  --bg: #0b0e14;
-  --text: #eef2f6;
-  --text-secondary: #94a3b8;
-  --text-muted: #6f7d90;
-
-  /* был #f7931a */
-  --accent: #8b5cf6;
-  --accent-hover: #a78bfa;
-  --accent-glow: rgba(139, 92, 246, 0.35);
-  --accent-soft: rgba(139, 92, 246, 0.12);
-
-  --border: #1e2a3a;
-  --card-bg: rgba(17, 24, 34, 0.75);
-  --shadow: 0 8px 30px rgba(0,0,0,0.6);
-  --btn-shadow: 0 6px 24px rgba(139, 92, 246, 0.35);
-
-  --gradient-color1: #0a0e1a;
-  --gradient-color2: #131626;   /* лёгкий фиолетовый оттенок */
-  --gradient-color3: #0f1428;
-}
-    [data-theme="light"] {
-  --bg: #f8f4ed;
-  --text: #1a1714;
-  --text-secondary: #6b5f52;
-  --text-muted: #9a8b7c;
-
-  --accent: #7c3aed;
-  --accent-hover: #6d28d9;
-  --accent-glow: rgba(124, 58, 237, 0.28);
-  --accent-soft: rgba(124, 58, 237, 0.08);
-
-  --border: #e6ddd2;
-  --card-bg: rgba(255, 252, 248, 0.92);
-  --shadow: 0 8px 40px rgba(0,0,0,0.06);
-  --btn-shadow: 0 6px 20px rgba(124, 58, 237, 0.2);
-
-  --gradient-color1: #f5ede2;
-  --gradient-color2: #e8dccc;
-  --gradient-color3: #f0e6d8;
-}
-
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>  <!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-RTH67WKMNQ"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());
+  gtag('config', 'G-RTH67WKMNQ');</script>    <meta charset="UTF-8">   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="Coino — decentralized digital currency for fast, low-cost global payments and blockchain education.">  <meta name="theme-color" content="#0b0e14">  <meta property="og:title" content="Coino — next-gen digital currency">  <meta property="og:description" content="Decentralized digital currency for fast, low-cost global payments and blockchain education.">  <meta property="og:image" content="https://coino.info/CNOV2.png">  <title>Coino — next‑gen digital currency</title>
+   <link rel="icon" type="image/x-icon" href="favicon.ico">  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">  <link rel="icon" type="image/svg+xml" href="favicon.svg">  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  <style>
+    :root {  
+      --bg: #0b0e14;  
+      --text: #eef2f6;  
+      --text-secondary: #94a3b8;  
+      --text-muted: #6f7d90;
+      /* Стиль Металлик / Платина */  
+      --accent: #cbd5e1;  
+      --accent-hover: #f1f5f9;  
+      --accent-glow: rgba(203, 213, 225, 0.25);  
+      --accent-soft: rgba(203, 213, 225, 0.08);
+      --border: #222b38;  
+      --card-bg: rgba(17, 24, 34, 0.85);  
+      --shadow: 0 8px 30px rgba(0,0,0,0.7);  
+      --btn-shadow: 0 6px 24px rgba(148, 163, 184, 0.2);
+      --gradient-color1: #07090f;  
+      --gradient-color2: #121824;   
+      --gradient-color3: #0a0e17;
+    }    
+    [data-theme="light"] {  
+      --bg: #f1f3f5;  
+      --text: #0f172a;  
+      --text-secondary: #475569;  
+      --text-muted: #94a3b8;
+      --accent: #475569;  
+      --accent-hover: #1e293b;  
+      --accent-glow: rgba(71, 85, 105, 0.2);  
+      --accent-soft: rgba(71, 85, 105, 0.06);
+      --border: #cbd5e1;  
+      --card-bg: rgba(255, 255, 255, 0.92);  
+      --shadow: 0 8px 40px rgba(0,0,0,0.08);  
+      --btn-shadow: 0 6px 20px rgba(71, 85, 105, 0.15);
+      --gradient-color1: #e2e8f0;  
+      --gradient-color2: #cbd5e1;  
+      --gradient-color3: #f8fafc;
+    }
     * { margin:0; padding:0; box-sizing:border-box; }
-       body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: color 0.5s ease;
-      min-height: 100vh;
-      display: flex;
-      padding: 20px;
-      overflow-x: hidden;
-      position: relative;
-    }
-    /* Animated gradient background */
-    .animated-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: linear-gradient(135deg, var(--gradient-color1) 0%, var(--gradient-color2) 50%, var(--gradient-color3) 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 20s ease infinite;
-      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Transition overlay for smooth theme switching */
-    .theme-transition-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-      background: transparent;
-      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    [data-theme="dark"] .theme-transition-overlay {
-      background: rgba(0,0,0,0);
-    }
-    [data-theme="light"] .theme-transition-overlay {
-      background: rgba(245, 237, 226, 0.15);
-    }
-
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      animation: float linear infinite;
-      opacity: 0;
-      transition: background 1.8s ease, box-shadow 1.8s ease;
-    }
-    [data-theme="dark"] .particle {
-      background: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
-    }
-    [data-theme="light"] .particle {
-      background: rgba(180, 160, 140, 0.25);
-      box-shadow: 0 0 12px rgba(180, 160, 140, 0.1);
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      width: 100%;
-      margin: auto;
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 32px;
-      padding: 50px 40px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: fadeInUp 1s ease-out;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .hero .logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 50px rgba(247,147,26,0.3);
-      margin-bottom: 20px;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--accent);
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-      cursor: default;
-      animation: pulseGlow 4s ease-in-out infinite alternate;
-    }
-    .hero .logo:hover {
-      transform: rotate(360deg) scale(1.05);
-    }
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 30px rgba(247,147,26,0.2); }
-      100% { box-shadow: 0 0 60px rgba(247,147,26,0.5); }
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 8px;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin-bottom: 28px;
-    }
-    .btn-primary {
-  display: inline-block;
-  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
-  color: #ffffff;                    /* было #0b0e14 */
-  padding: 16px 44px;
-  border-radius: 60px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  box-shadow: var(--btn-shadow);
-  transition: 0.3s;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-}
-.btn-primary:hover {
-  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
-  color: #ffffff;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.55);
-}
-    .btn-primary i { margin-right: 10px; }
-
+    body {      
+      font-family: 'Inter', sans-serif;      
+      background: var(--bg);      
+      color: var(--text);      
+      line-height: 1.6;      
+      transition: color 0.5s ease;      
+      min-height: 100vh;      
+      display: flex;      
+      padding: 20px;      
+      overflow-x: hidden;      
+      position: relative;    }    
+    /* Animated gradient background */    
+    .animated-bg {      
+      position: fixed;      
+      top: 0;      
+      left: 0;      
+      width: 100%;      
+      height: 100%;      
+      z-index: 0;      
+      background: linear-gradient(135deg, var(--gradient-color1) 0%, var(--gradient-color2) 50%, var(--gradient-color3) 100%);      
+      background-size: 400% 400%;      
+      animation: gradientShift 20s ease infinite;      
+      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);    }    
+    @keyframes gradientShift {      
+      0% { background-position: 0% 50%; }      
+      50% { background-position: 100% 50%; }      
+      100% { background-position: 0% 50%; }    }
     
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin: 30px 0 36px;
-    }
-    .feature-card {
-      background: var(--bg);
-      border-radius: 24px;
-      padding: 28px 20px;
-      border: 1px solid var(--border);
-      transition: 0.4s;
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out both;
-    }
-    .feature-card:nth-child(1) { animation-delay: 0.1s; }
-    .feature-card:nth-child(2) { animation-delay: 0.2s; }
-    .feature-card:nth-child(3) { animation-delay: 0.3s; }
-    .feature-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    }
-    .feature-card i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-    .feature-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .feature-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-
-    .bottom-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 28px 40px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      font-size: 0.95rem;
-      animation: fadeInUp 1s ease-out 0.4s both;
-    }
-    .bottom-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 2px;
-    }
-    .bottom-links a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 24px;
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 10px 22px;
-      color: var(--text);
+    .theme-transition-overlay {      
+      position: fixed;      
+      top: 0;      
+      left: 0;      
+      width: 100%;      
+      height: 100%;      
+      z-index: 1;      
+      pointer-events: none;      
+      background: transparent;      
+      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);    }    
+    [data-theme="dark"] .theme-transition-overlay { background: rgba(0,0,0,0); }    
+    [data-theme="light"] .theme-transition-overlay { background: rgba(226, 232, 240, 0.15); }
+    
+    .particles {      
+      position: fixed;      
+      top: 0;      
+      left: 0;      
+      width: 100%;      
+      height: 100%;      
+      z-index: 1;      
+      pointer-events: none;      
+      overflow: hidden;    }    
+    .particle {      
+      position: absolute;      
+      border-radius: 50%;      
+      animation: float linear infinite;      
+      opacity: 0;      
+      transition: background 1.8s ease, box-shadow 1.8s ease;    }    
+    [data-theme="dark"] .particle {      
+      background: rgba(203, 213, 225, 0.4);      
+      box-shadow: 0 0 8px rgba(203, 213, 225, 0.15);    }    
+    [data-theme="light"] .particle {      
+      background: rgba(100, 116, 139, 0.25);      
+      box-shadow: 0 0 12px rgba(100, 116, 139, 0.1);    }    
+    @keyframes float {      
+      0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }      
+      10% { opacity: 1; }      
+      90% { opacity: 1; }      
+      100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }    }
+    
+    .container {      
+      position: relative;      
+      z-index: 2;      
+      max-width: 1000px;      
+      width: 100%;      
+      margin: auto;      
+      background: var(--card-bg);      
+      backdrop-filter: blur(16px);      
+      -webkit-backdrop-filter: blur(16px);      
+      border-radius: 32px;      
+      padding: 50px 40px;      
+      border: 1px solid var(--border);      
+      box-shadow: var(--shadow);      
+      transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);      
+      animation: fadeInUp 1s ease-out;    }    
+    @keyframes fadeInUp {      
+      from { opacity: 0; transform: translateY(40px); }      
+      to { opacity: 1; transform: translateY(0); }    }
+    
+    .hero {      
+      display: flex;      
+      flex-direction: column;      
+      align-items: center;      
+      text-align: center;      
+      margin-bottom: 48px;    }    
+    .hero .logo {      
+      width: 100px;      
+      height: 100px;      
+      border-radius: 50%;      
+      border: 3px solid var(--accent);      
+      box-shadow: 0 0 40px rgba(148, 163, 184, 0.25);      
+      margin-bottom: 20px;      
+      background: var(--bg);      
+      display: flex;      
+      align-items: center;      
+      justify-content: center;      
+      font-size: 2.8rem;      
+      font-weight: 800;      
+      color: var(--accent);      
+      transition: transform 0.6s ease, box-shadow 0.6s ease;      
+      cursor: default;      
+      animation: pulseGlow 4s ease-in-out infinite alternate;    }    
+    .hero .logo:hover { transform: rotate(360deg) scale(1.05); }    
+    @keyframes pulseGlow {      
+      0% { box-shadow: 0 0 25px rgba(148, 163, 184, 0.15); }      
+      100% { box-shadow: 0 0 50px rgba(148, 163, 184, 0.35); }    }    
+    .hero h1 {      
+      font-size: 3.5rem;      
+      font-weight: 800;      
+      letter-spacing: -1px;      
+      margin-bottom: 8px;    }    
+    .hero h1 span { color: var(--accent); }    
+    .hero p {      
+      font-size: 1.2rem;      
+      color: var(--text-secondary);      
+      max-width: 600px;      
+      margin-bottom: 28px;    }    
+    
+    .btn-primary {  
+      display: inline-block;  
+      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);  
+      color: #0b0e14;                    
+      padding: 16px 44px;  
+      border-radius: 60px;  
+      font-weight: 700;  
+      font-size: 1.1rem;  
+      box-shadow: var(--btn-shadow);  
+      transition: 0.3s;  
+      text-decoration: none;  
+      border: none;  
       cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.3s;
-      z-index: 10;
-      letter-spacing: 0.3px;
-    }
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(247,147,26,0.15);
-    }
-    .theme-toggle i {
-      font-size: 1.1rem;
-      transition: transform 0.4s ease;
-    }
-    .theme-toggle:hover i {
-      transform: rotate(20deg);
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 30px 20px; }
-      .hero h1 { font-size: 2.6rem; }
-      .features { grid-template-columns: 1fr; }
-      .theme-toggle { padding: 8px 16px; font-size: 0.8rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .particle, .animated-bg, .hero .logo { animation: none !important; }
-      .container, .feature-card, .bottom-links { animation: none !important; }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2rem; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Animated gradient background -->
-  <div class="animated-bg" id="animatedBg"></div>
+    }    
+    .btn-primary:hover {  
+      background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);  
+      color: #020617;  
+      transform: translateY(-3px) scale(1.02);  
+      box-shadow: 0 12px 40px rgba(203, 213, 225, 0.4);
+    }    
+    .btn-primary i { margin-right: 10px; }
+        
+    .features {      
+      display: grid;      
+      grid-template-columns: repeat(3, 1fr);      
+      gap: 24px;      
+      margin: 30px 0 36px;    }    
+    .feature-card {      
+      background: var(--bg);      
+      border-radius: 24px;      
+      padding: 28px 20px;      
+      border: 1px solid var(--border);      
+      transition: 0.4s;      
+      text-align: center;      
+      animation: fadeInUp 0.8s ease-out both;    }    
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }    
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }    
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }    
+    .feature-card:hover {      
+      border-color: var(--accent);      
+      transform: translateY(-8px) scale(1.02);      
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);    }    
+    .feature-card i {      
+      font-size: 2.5rem;      
+      color: var(--accent);      
+      margin-bottom: 12px;    }    
+    .feature-card h3 {      
+      font-size: 1.2rem;      
+      font-weight: 700;      
+      margin-bottom: 6px;    }    
+    .feature-card p {      
+      color: var(--text-secondary);      
+      font-size: 0.95rem;    }
+    
+    .bottom-links {      
+      display: flex;      
+      flex-wrap: wrap;      
+      justify-content: center;      
+      gap: 28px 40px;      
+      padding-top: 24px;      
+      border-top: 1px solid var(--border);      
+      font-size: 0.95rem;      
+      animation: fadeInUp 1s ease-out 0.4s both;    }    
+    .bottom-links a {      
+      color: var(--text-secondary);      
+      text-decoration: none;      
+      transition: 0.3s;      
+      display: inline-flex;      
+      align-items: center;      
+      gap: 8px;      
+      border-bottom: 2px solid transparent;      
+      padding-bottom: 2px;    }    
+    .bottom-links a:hover {      
+      color: var(--accent);      
+      border-bottom-color: var(--accent);      
+      transform: translateY(-2px);    }
+    
+    .theme-toggle {      
+      position: fixed;      
+      top: 20px;      
+      right: 24px;      
+      background: var(--card-bg);      
+      backdrop-filter: blur(12px);      
+      -webkit-backdrop-filter: blur(12px);      
+      border: 1px solid var(--border);      
+      border-radius: 30px;      
+      padding: 10px 22px;      
+      color: var(--text);      
+      cursor: pointer;      
+      font-size: 0.9rem;      
+      font-weight: 600;      
+      display: flex;      
+      align-items: center;      
+      gap: 10px;      
+      transition: 0.3s;      
+      z-index: 10;      
+      letter-spacing: 0.3px;    }    
+    .theme-toggle:hover {      
+      border-color: var(--accent);      
+      transform: scale(1.05);      
+      box-shadow: 0 0 30px rgba(148, 163, 184, 0.15);    }    
+    .theme-toggle i {      
+      font-size: 1.1rem;      
+      transition: transform 0.4s ease;    }    
+    .theme-toggle:hover i { transform: rotate(20deg); }
+    
+    @media (max-width: 768px) {      
+      .container { padding: 30px 20px; }      
+      .hero h1 { font-size: 2.6rem; }      
+      .features { grid-template-columns: 1fr; }      
+      .theme-toggle { padding: 8px 16px; font-size: 0.8rem; }    }    
+    @media (prefers-reduced-motion: reduce) {      
+      .particle, .animated-bg, .hero .logo { animation: none !important; }      
+      .container, .feature-card, .bottom-links { animation: none !important; }    }    
+    @media (max-width: 480px) {      
+      .hero h1 { font-size: 2rem; }    }  
+  </style></head><body>
   
-  <!-- Transition overlay for smooth theme switching -->
+  <div class="animated-bg" id="animatedBg"></div>    
   <div class="theme-transition-overlay" id="transitionOverlay"></div>
-
   <div class="particles" id="particles"></div>
-
-   <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
-    <i class="fas fa-sun" aria-hidden="true"></i>
-    <span id="themeLabel">Light</span>
+   
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">    
+    <i class="fas fa-sun" aria-hidden="true"></i>    
+    <span id="themeLabel">Light</span>  
   </button>
-
-  <div class="container">
-    <div class="hero">
-        <div class="logo">
-          <img src="CNOV2.png" alt="Coino logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
-        </div>
-      <h1>Coino<span>.</span></h1>
-      <p>Decentralized digital currency for fast, low‑cost global payments and an ecosystem for blockchain education.</p>
-      
+  
+  <div class="container">    
+    <div class="hero">        
+      <div class="logo">          
+        <img src="CNOV2.png" alt="Coino logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">        
+      </div>      
+      <h1>Coino<span>.</span></h1>      
+      <p>Decentralized digital currency for fast, low‑cost global payments and an ecosystem for blockchain education.</p>            
       <a href="https://scan.coino.info" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-right"></i> Explore Coino</a>
-
     </div>
-
-    <div class="features">
-      <div class="feature-card">
-        <i class="fas fa-bolt"></i>
-        <h3>Lightning speed</h3>
-        <p>Up to 10,000 TPS with near‑zero fees — ready for everyday payments.</p>
-      </div>
-      <div class="feature-card">
-        <i class="fas fa-shield-alt"></i>
-        <h3>Secure & private</h3>
-        <p>Proof‑of‑Stake consensus and advanced cryptography protect your assets.</p>
-      </div>
-      <div class="feature-card">
-        <i class="fas fa-graduation-cap"></i>
-        <h3>CoinoAxis</h3>
-        <p>Educational project with free courses, webinars and hands‑on blockchain labs.</p>
-      </div>
-    </div>
-
-    <div class="bottom-links">
-        <a href="https://explorer.coino.info/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> NETWORK</a>
-        <a href="https://github.com/scriptRack003756/coino" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://t.me/CoinoCNO" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>
-        <a href="https://scan.coino.info/aboutcno.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> About</a>
-          
-    </div>
+    
+    <div class="features">      
+      <div class="feature-card">        
+        <i class="fas fa-bolt"></i>        
+        <h3>Lightning speed</h3>        
+        <p>Up to 10,000 TPS with near‑zero fees — ready for everyday payments.</p>      </div>      
+      <div class="feature-card">        
+        <i class="fas fa-shield-alt"></i>        
+        <h3>Secure & private</h3>        
+        <p>Proof‑of‑Stake consensus and advanced cryptography protect your assets.</p>      </div>      
+      <div class="feature-card">        
+        <i class="fas fa-graduation-cap"></i>        
+        <h3>CoinoAxis</h3>        
+        <p>Educational project with free courses, webinars and hands‑on blockchain labs.</p>      </div>    </div>
+    
+    <div class="bottom-links">        
+      <a href="https://explorer.coino.info/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> NETWORK</a>        
+      <a href="https://github.com/scriptRack003756/coino" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>        
+      <a href="https://t.me/CoinoCNO" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a>        
+      <a href="https://scan.coino.info/aboutcno.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> About</a>              
+    </div>  
   </div>
-
-   <script>
+   
+  <script>    
     (function() {
-
-      const toggle     = document.getElementById('themeToggle');
-      const icon       = toggle.querySelector('i');
-      const label      = toggle.querySelector('#themeLabel');
-      const html       = document.documentElement;
+      const toggle     = document.getElementById('themeToggle');      
+      const icon       = toggle.querySelector('i');      
+      const label      = toggle.querySelector('#themeLabel');      
+      const html       = document.documentElement;      
       const animatedBg = document.getElementById('animatedBg');
 
-      function setTheme(theme) {
+      function setTheme(theme) {        
         const isDark = theme === 'dark';
-
-        html.setAttribute('data-theme', theme);
+        html.setAttribute('data-theme', theme);        
         try { localStorage.setItem('coino-theme', theme); } catch (e) {}
 
-        // Кнопка показывает ПРОТИВОПОЛОЖНУЮ тему — на что переключит
-        label.textContent = isDark ? 'Light' : 'Dark';
-        icon.className    = `fas ${isDark ? 'fa-sun' : 'fa-moon'}`;
-        toggle.setAttribute('aria-pressed', String(!isDark));
+        label.textContent = isDark ? 'Light' : 'Dark';        
+        icon.className    = `fas ${isDark ? 'fa-sun' : 'fa-moon'}`;        
+        toggle.setAttribute('aria-pressed', String(!isDark));      
       }
 
-      // Загружаем сохранённую тему или тёмную по умолчанию
-      let saved = 'dark';
-      try { saved = localStorage.getItem('coino-theme') || 'dark'; } catch (e) {}
+      let saved = 'dark';      
+      try { saved = localStorage.getItem('coino-theme') || 'dark'; } catch (e) {}      
       setTheme(saved);
 
-      // Переключение по клику
-      toggle.addEventListener('click', () => {
-        const current  = html.getAttribute('data-theme');
+      toggle.addEventListener('click', () => {        
+        const current  = html.getAttribute('data-theme');        
         const newTheme = current === 'dark' ? 'light' : 'dark';
 
-        animatedBg.style.animation = 'none';
-        setTimeout(() => {
-          animatedBg.style.animation = 'gradientShift 20s ease infinite';
+        animatedBg.style.animation = 'none';        
+        setTimeout(() => {          
+          animatedBg.style.animation = 'gradientShift 20s ease infinite';        
         }, 10);
 
-        setTheme(newTheme);
-      });
+        setTheme(newTheme);      });
 
-      // Частицы
-      const particlesContainer = document.getElementById('particles');
-      const count = 80;
-      for (let i = 0; i < count; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        const size = Math.random() * 4 + 1.5;
-        particle.style.width  = size + 'px';
-        particle.style.height = size + 'px';
-        particle.style.left   = Math.random() * 100 + '%';
-        particle.style.animationDuration = (Math.random() * 30 + 20) + 's';
-        particle.style.animationDelay    = (Math.random() * 20) + 's';
-        particle.style.opacity = Math.random() * 0.6 + 0.1;
-        particlesContainer.appendChild(particle);
-      }
-    })();
-  </script>
-</body>
-</html>
+      const particlesContainer = document.getElementById('particles');      
+      const count = 80;      
+      for (let i = 0; i < count; i++) {        
+        const particle = document.createElement('div');        
+        particle.className = 'particle';        
+        const size = Math.random() * 4 + 1.5;        
+        particle.style.width  = size + 'px';        
+        particle.style.height = size + 'px';        
+        particle.style.left   = Math.random() * 100 + '%';        
+        particle.style.animationDuration = (Math.random() * 30 + 20) + 's';        
+        particle.style.animationDelay    = (Math.random() * 20) + 's';        
+        particle.style.opacity = Math.random() * 0.6 + 0.1;        
+        particlesContainer.appendChild(particle);      }    
+    })();  
+  </script></body></html>
