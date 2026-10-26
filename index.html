@@ -401,56 +401,57 @@
     </div>
   </div>
 
-  <script>
+   <script>
     (function() {
-      
-      const toggle = document.getElementById('themeToggle');
-      const label = document.getElementById('themeLabel');
-      const html = document.documentElement;
+
+      const toggle     = document.getElementById('themeToggle');
+      const icon       = toggle.querySelector('i');
+      const label      = toggle.querySelector('#themeLabel');
+      const html       = document.documentElement;
       const animatedBg = document.getElementById('animatedBg');
 
       function setTheme(theme) {
         const isDark = theme === 'dark';
-        
-        // Set data-theme attribute
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('coino-theme', theme);
 
-        // Update button text and icon - SHOW OPPOSITE of current theme
+        html.setAttribute('data-theme', theme);
+        try { localStorage.setItem('coino-theme', theme); } catch (e) {}
+
+        // Кнопка показывает ПРОТИВОПОЛОЖНУЮ тему — на что переключит
         label.textContent = isDark ? 'Light' : 'Dark';
-        toggle.innerHTML = `<i class="fas ${isDark ? 'fa-sun' : 'fa-moon'}"></i> <span id="themeLabel">${label.textContent}</span>`;
+        icon.className    = `fas ${isDark ? 'fa-sun' : 'fa-moon'}`;
+        toggle.setAttribute('aria-pressed', String(!isDark));
       }
 
-      // Load saved theme or default to dark
-      const saved = localStorage.getItem('coino-theme') || 'dark';
+      // Загружаем сохранённую тему или тёмную по умолчанию
+      let saved = 'dark';
+      try { saved = localStorage.getItem('coino-theme') || 'dark'; } catch (e) {}
       setTheme(saved);
 
-      // Toggle theme on click
+      // Переключение по клику
       toggle.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme');
+        const current  = html.getAttribute('data-theme');
         const newTheme = current === 'dark' ? 'light' : 'dark';
-        
-        // Restart gradient animation for a nice effect
+
         animatedBg.style.animation = 'none';
         setTimeout(() => {
           animatedBg.style.animation = 'gradientShift 20s ease infinite';
         }, 10);
-        
+
         setTheme(newTheme);
       });
 
-      // Create floating particles
+      // Частицы
       const particlesContainer = document.getElementById('particles');
       const count = 80;
       for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         const size = Math.random() * 4 + 1.5;
-        particle.style.width = size + 'px';
+        particle.style.width  = size + 'px';
         particle.style.height = size + 'px';
-        particle.style.left = Math.random() * 100 + '%';
+        particle.style.left   = Math.random() * 100 + '%';
         particle.style.animationDuration = (Math.random() * 30 + 20) + 's';
-        particle.style.animationDelay = (Math.random() * 20) + 's';
+        particle.style.animationDelay    = (Math.random() * 20) + 's';
         particle.style.opacity = Math.random() * 0.6 + 0.1;
         particlesContainer.appendChild(particle);
       }
