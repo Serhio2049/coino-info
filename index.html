@@ -269,6 +269,26 @@
       font-size: 1.1rem;      
       transition: transform 0.4s ease;    }    
     .theme-toggle:hover i { transform: rotate(20deg); }
+
+    /* ===== BASEMENT===== */
+    .site-footer {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1000px;
+      margin: 24px auto 0;
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      transition: color 0.5s ease, border-color 0.5s ease;
+    }
+    .site-footer small {
+      color: inherit;
+      font-size: inherit;
+    }
     
     @media (max-width: 768px) {      
       .container { padding: 30px 20px; }      
@@ -372,7 +392,7 @@
        })();
   </script>
 
-  <!-- ===== ПОДВАЛ ===== -->
+  <!-- ===== BASEMENT ===== -->
   <footer class="site-footer">
     <small>© 2026 Coino.info — All rights reserved.</small>
   </footer>
