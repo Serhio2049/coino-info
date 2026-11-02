@@ -1,13 +1,53 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head>  <!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-RTH67WKMNQ"></script><script>  window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());
-  gtag('config', 'G-RTH67WKMNQ');</script>    <meta charset="UTF-8">   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="Coino — decentralized digital currency for fast, low-cost global payments and blockchain education.">  <meta name="theme-color" content="#0b0e14">  <meta property="og:title" content="Coino — next-gen digital currency">  <meta property="og:description" content="Decentralized digital currency for fast, low-cost global payments and blockchain education.">  <meta property="og:image" content="https://coino.info/CNOV2.png">  <title>Coino — next‑gen digital currency</title>
-   <link rel="icon" type="image/x-icon" href="favicon.ico">  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">  <link rel="icon" type="image/svg+xml" href="favicon.svg">  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">  <link rel="manifest" href="site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  <style>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- 1. Initialize dataLayer (GA loads only after consent) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+
+  <!-- 2. Load SynapxLab Cookie Consent (GDPR) -->
+  <script src="https://cdn.jsdelivr.net/npm/@synapxlab/cookie-consent/dist/cookie.min.js"></script>
+
+  <!-- 3. Initialize SynapxLab with your GA ID -->
+  <script>
+    window.CookieConsent.init({
+      statistics: {
+        google_analytics_key: 'G-RTH67WKMNQ'
+      }
+    });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coino — decentralized digital currency for fast, low-cost global payments and blockchain education.">
+  <meta name="theme-color" content="#0b0e14">
+  <meta property="og:title" content="Coino — next-gen digital currency">
+  <meta property="og:description" content="Decentralized digital currency for fast, low-cost global payments and blockchain education.">
+  <meta property="og:image" content="https://coino.info/CNOV2.png">
+  <title>Coino — next‑gen digital currency</title>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <style>
+    /* ===== CSS VARIABLES (DARK THEME) ===== */
     :root {  
       --bg: #0b0e14;  
       --text: #eef2f6;  
       --text-secondary: #94a3b8;  
       --text-muted: #6f7d90;
-      /* Стиль Металлик / Платина */  
+      /* Metallic / Platinum style */  
       --accent: #cbd5e1;  
       --accent-hover: #f1f5f9;  
       --accent-glow: rgba(203, 213, 225, 0.25);  
@@ -20,6 +60,8 @@
       --gradient-color2: #121824;   
       --gradient-color3: #0a0e17;
     }    
+
+    /* ===== CSS VARIABLES (LIGHT THEME) ===== */
     [data-theme="light"] {  
       --bg: #f1f3f5;  
       --text: #0f172a;  
@@ -37,7 +79,11 @@
       --gradient-color2: #cbd5e1;  
       --gradient-color3: #f8fafc;
     }
+
+    /* ===== GLOBAL RESET ===== */
     * { margin:0; padding:0; box-sizing:border-box; }
+
+    /* ===== BODY LAYOUT ===== */
     body {      
       font-family: 'Inter', sans-serif;      
       background: var(--bg);      
@@ -45,15 +91,16 @@
       line-height: 1.6;      
       transition: color 0.5s ease;      
       min-height: 100vh;      
-      display: flex; 
+      display: flex;      
       flex-direction: column;
-      align-items: center; 
+      align-items: center;
+      gap: 24px;
       padding: 20px;      
       overflow-x: hidden;      
-      position: relative; 
-     gap: 24px;  
+      position: relative;    
     }    
-    /* Animated gradient background */    
+
+    /* ===== ANIMATED GRADIENT BACKGROUND ===== */    
     .animated-bg {      
       position: fixed;      
       top: 0;      
@@ -64,12 +111,15 @@
       background: linear-gradient(135deg, var(--gradient-color1) 0%, var(--gradient-color2) 50%, var(--gradient-color3) 100%);      
       background-size: 400% 400%;      
       animation: gradientShift 20s ease infinite;      
-      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);    }    
+      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);    
+    }    
     @keyframes gradientShift {      
       0% { background-position: 0% 50%; }      
       50% { background-position: 100% 50%; }      
-      100% { background-position: 0% 50%; }    }
-    
+      100% { background-position: 0% 50%; }    
+    }
+
+    /* ===== THEME TRANSITION OVERLAY ===== */
     .theme-transition-overlay {      
       position: fixed;      
       top: 0;      
@@ -79,10 +129,12 @@
       z-index: 1;      
       pointer-events: none;      
       background: transparent;      
-      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);    }    
+      transition: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);    
+    }    
     [data-theme="dark"] .theme-transition-overlay { background: rgba(0,0,0,0); }    
     [data-theme="light"] .theme-transition-overlay { background: rgba(226, 232, 240, 0.15); }
-    
+
+    /* ===== PARTICLES CONTAINER ===== */
     .particles {      
       position: fixed;      
       top: 0;      
@@ -91,25 +143,33 @@
       height: 100%;      
       z-index: 1;      
       pointer-events: none;      
-      overflow: hidden;    }    
+      overflow: hidden;    
+    }    
+
+    /* ===== PARTICLES ===== */
     .particle {      
       position: absolute;      
       border-radius: 50%;      
       animation: float linear infinite;      
       opacity: 0;      
-      transition: background 1.8s ease, box-shadow 1.8s ease;    }    
+      transition: background 1.8s ease, box-shadow 1.8s ease;    
+    }    
     [data-theme="dark"] .particle {      
       background: rgba(203, 213, 225, 0.4);      
-      box-shadow: 0 0 8px rgba(203, 213, 225, 0.15);    }    
+      box-shadow: 0 0 8px rgba(203, 213, 225, 0.15);    
+    }    
     [data-theme="light"] .particle {      
       background: rgba(100, 116, 139, 0.25);      
-      box-shadow: 0 0 12px rgba(100, 116, 139, 0.1);    }    
+      box-shadow: 0 0 12px rgba(100, 116, 139, 0.1);    
+    }    
     @keyframes float {      
       0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }      
       10% { opacity: 1; }      
       90% { opacity: 1; }      
-      100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }    }
-    
+      100% { transform: translateY(-10vh) scale(1) rotate(360deg); opacity: 0; }    
+    }
+
+    /* ===== MAIN CARD CONTAINER ===== */
     .container {      
       position: relative;      
       z-index: 2;      
@@ -124,17 +184,21 @@
       border: 1px solid var(--border);      
       box-shadow: var(--shadow);      
       transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);      
-      animation: fadeInUp 1s ease-out;    }    
+      animation: fadeInUp 1s ease-out;    
+    }    
     @keyframes fadeInUp {      
       from { opacity: 0; transform: translateY(40px); }      
-      to { opacity: 1; transform: translateY(0); }    }
-    
+      to { opacity: 1; transform: translateY(0); }    
+    }
+
+    /* ===== HERO SECTION ===== */
     .hero {      
       display: flex;      
       flex-direction: column;      
       align-items: center;      
       text-align: center;      
-      margin-bottom: 48px;    }    
+      margin-bottom: 48px;    
+    }    
     .hero .logo {      
       width: 100px;      
       height: 100px;      
@@ -151,23 +215,28 @@
       color: var(--accent);      
       transition: transform 0.6s ease, box-shadow 0.6s ease;      
       cursor: default;      
-      animation: pulseGlow 4s ease-in-out infinite alternate;    }    
+      animation: pulseGlow 4s ease-in-out infinite alternate;    
+    }    
     .hero .logo:hover { transform: rotate(360deg) scale(1.05); }    
     @keyframes pulseGlow {      
       0% { box-shadow: 0 0 25px rgba(148, 163, 184, 0.15); }      
-      100% { box-shadow: 0 0 50px rgba(148, 163, 184, 0.35); }    }    
+      100% { box-shadow: 0 0 50px rgba(148, 163, 184, 0.35); }    
+    }    
     .hero h1 {      
       font-size: 3.5rem;      
       font-weight: 800;      
       letter-spacing: -1px;      
-      margin-bottom: 8px;    }    
+      margin-bottom: 8px;    
+    }    
     .hero h1 span { color: var(--accent); }    
     .hero p {      
       font-size: 1.2rem;      
       color: var(--text-secondary);      
       max-width: 600px;      
-      margin-bottom: 28px;    }    
-    
+      margin-bottom: 28px;    
+    }
+
+    /* ===== PRIMARY BUTTON ===== */
     .btn-primary {  
       display: inline-block;  
       background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);  
@@ -189,12 +258,14 @@
       box-shadow: 0 12px 40px rgba(203, 213, 225, 0.4);
     }    
     .btn-primary i { margin-right: 10px; }
-        
+
+    /* ===== FEATURES GRID ===== */
     .features {      
       display: grid;      
       grid-template-columns: repeat(3, 1fr);      
       gap: 24px;      
-      margin: 30px 0 36px;    }    
+      margin: 30px 0 36px;    
+    }    
     .feature-card {      
       background: var(--bg);      
       border-radius: 24px;      
@@ -202,26 +273,32 @@
       border: 1px solid var(--border);      
       transition: 0.4s;      
       text-align: center;      
-      animation: fadeInUp 0.8s ease-out both;    }    
+      animation: fadeInUp 0.8s ease-out both;    
+    }    
     .feature-card:nth-child(1) { animation-delay: 0.1s; }    
     .feature-card:nth-child(2) { animation-delay: 0.2s; }    
     .feature-card:nth-child(3) { animation-delay: 0.3s; }    
     .feature-card:hover {      
       border-color: var(--accent);      
       transform: translateY(-8px) scale(1.02);      
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);    }    
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);    
+    }    
     .feature-card i {      
       font-size: 2.5rem;      
       color: var(--accent);      
-      margin-bottom: 12px;    }    
+      margin-bottom: 12px;    
+    }    
     .feature-card h3 {      
       font-size: 1.2rem;      
       font-weight: 700;      
-      margin-bottom: 6px;    }    
+      margin-bottom: 6px;    
+    }    
     .feature-card p {      
       color: var(--text-secondary);      
-      font-size: 0.95rem;    }
-    
+      font-size: 0.95rem;    
+    }
+
+    /* ===== BOTTOM LINKS ===== */
     .bottom-links {      
       display: flex;      
       flex-wrap: wrap;      
@@ -230,7 +307,8 @@
       padding-top: 24px;      
       border-top: 1px solid var(--border);      
       font-size: 0.95rem;      
-      animation: fadeInUp 1s ease-out 0.4s both;    }    
+      animation: fadeInUp 1s ease-out 0.4s both;    
+    }    
     .bottom-links a {      
       color: var(--text-secondary);      
       text-decoration: none;      
@@ -239,12 +317,15 @@
       align-items: center;      
       gap: 8px;      
       border-bottom: 2px solid transparent;      
-      padding-bottom: 2px;    }    
+      padding-bottom: 2px;    
+    }    
     .bottom-links a:hover {      
       color: var(--accent);      
       border-bottom-color: var(--accent);      
-      transform: translateY(-2px);    }
-    
+      transform: translateY(-2px);    
+    }
+
+    /* ===== THEME TOGGLE BUTTON ===== */
     .theme-toggle {      
       position: fixed;      
       top: 20px;      
@@ -264,27 +345,31 @@
       gap: 10px;      
       transition: 0.3s;      
       z-index: 10;      
-      letter-spacing: 0.3px;    }    
+      letter-spacing: 0.3px;    
+    }    
     .theme-toggle:hover {      
       border-color: var(--accent);      
       transform: scale(1.05);      
-      box-shadow: 0 0 30px rgba(148, 163, 184, 0.15);    }    
+      box-shadow: 0 0 30px rgba(148, 163, 184, 0.15);    
+    }    
     .theme-toggle i {      
       font-size: 1.1rem;      
-      transition: transform 0.4s ease;    }    
+      transition: transform 0.4s ease;    
+    }    
     .theme-toggle:hover i { transform: rotate(20deg); }
 
-    /* ===== BASEMENT===== */
+    /* ===== FOOTER ===== */
     .site-footer {
       position: relative;
       z-index: 2;
       width: 100%;
       max-width: 1000px;
-      margin: 24px auto 0;
+      margin: 0 auto;
       padding: 16px 20px;
       text-align: center;
-      font-size: 0.7rem;
-      letter-spacing: 0.3px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
       transition: color 0.5s ease, border-color 0.5s ease;
@@ -293,28 +378,41 @@
       color: inherit;
       font-size: inherit;
     }
-    
+
+    /* ===== RESPONSIVE: TABLET ===== */
     @media (max-width: 768px) {      
       .container { padding: 30px 20px; }      
       .hero h1 { font-size: 2.6rem; }      
       .features { grid-template-columns: 1fr; }      
-      .theme-toggle { padding: 8px 16px; font-size: 0.8rem; }    }    
+      .theme-toggle { padding: 8px 16px; font-size: 0.8rem; }    
+    }
+
+    /* ===== REDUCED MOTION ===== */
     @media (prefers-reduced-motion: reduce) {      
       .particle, .animated-bg, .hero .logo { animation: none !important; }      
-      .container, .feature-card, .bottom-links { animation: none !important; }    }    
+      .container, .feature-card, .bottom-links { animation: none !important; }    
+    }
+
+    /* ===== RESPONSIVE: MOBILE ===== */
     @media (max-width: 480px) {      
-      .hero h1 { font-size: 2rem; }    }  
-  </style></head><body>
+      .hero h1 { font-size: 2rem; }    
+    }  
+  </style>
+</head>
+<body>
   
+  <!-- Background layers -->
   <div class="animated-bg" id="animatedBg"></div>    
   <div class="theme-transition-overlay" id="transitionOverlay"></div>
   <div class="particles" id="particles"></div>
    
+  <!-- Theme toggle -->
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">    
     <i class="fas fa-sun" aria-hidden="true"></i>    
     <span id="themeLabel">Light</span>  
   </button>
   
+  <!-- Main content card -->
   <div class="container">    
     <div class="hero">        
       <div class="logo">          
@@ -329,15 +427,19 @@
       <div class="feature-card">        
         <i class="fas fa-bolt"></i>        
         <h3>Lightning speed</h3>        
-        <p>Up to 10,000 TPS with near‑zero fees — ready for everyday payments.</p>      </div>      
+        <p>Up to 10,000 TPS with near‑zero fees — ready for everyday payments.</p>      
+      </div>      
       <div class="feature-card">        
         <i class="fas fa-shield-alt"></i>        
         <h3>Secure & private</h3>        
-        <p>Proof‑of‑Stake consensus and advanced cryptography protect your assets.</p>      </div>      
+        <p>Proof‑of‑Stake consensus and advanced cryptography protect your assets.</p>      
+      </div>      
       <div class="feature-card">        
         <i class="fas fa-graduation-cap"></i>        
         <h3>CoinoAxis</h3>        
-        <p>Educational project with free courses, webinars and hands‑on blockchain labs.</p>      </div>    </div>
+        <p>Educational project with free courses, webinars and hands‑on blockchain labs.</p>      
+      </div>    
+    </div>
     
     <div class="bottom-links">        
       <a href="https://explorer.coino.info/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> NETWORK</a>        
@@ -349,6 +451,7 @@
    
   <script>    
     (function() {
+      /* ===== THEME TOGGLE LOGIC ===== */
       const toggle     = document.getElementById('themeToggle');      
       const icon       = toggle.querySelector('i');      
       const label      = toggle.querySelector('#themeLabel');      
@@ -373,30 +476,36 @@
         const current  = html.getAttribute('data-theme');        
         const newTheme = current === 'dark' ? 'light' : 'dark';
 
+        /* Restart background animation on theme switch */
         animatedBg.style.animation = 'none';        
         setTimeout(() => {          
           animatedBg.style.animation = 'gradientShift 20s ease infinite';        
         }, 10);
 
-        setTheme(newTheme);      });
+        setTheme(newTheme);      
+      });
 
+      /* ===== PARTICLES GENERATION ===== */
       const particlesContainer = document.getElementById('particles');      
-      const count = 80;      
-      for (let i = 0; i < count; i++) {        
-        const particle = document.createElement('div');        
-        particle.className = 'particle';        
-        const size = Math.random() * 4 + 1.5;        
-        particle.style.width  = size + 'px';        
-        particle.style.height = size + 'px';        
-        particle.style.left   = Math.random() * 100 + '%';        
-        particle.style.animationDuration = (Math.random() * 30 + 20) + 's';        
-        particle.style.animationDelay    = (Math.random() * 20) + 's';        
-        particle.style.opacity = Math.random() * 0.6 + 0.1;        
-        particlesContainer.appendChild(particle);      }    
-       })();
+      if (particlesContainer) {
+        const count = 80;      
+        for (let i = 0; i < count; i++) {        
+          const particle = document.createElement('div');        
+          particle.className = 'particle';        
+          const size = Math.random() * 4 + 1.5;        
+          particle.style.width  = size + 'px';        
+          particle.style.height = size + 'px';        
+          particle.style.left   = Math.random() * 100 + '%';        
+          particle.style.animationDuration = (Math.random() * 30 + 20) + 's';        
+          particle.style.animationDelay    = (Math.random() * 20) + 's';        
+          particle.style.opacity = Math.random() * 0.6 + 0.1;        
+          particlesContainer.appendChild(particle);      
+        }
+      }    
+    })();
   </script>
 
-  <!-- ===== BASEMENT ===== -->
+  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <small>© 2026 Coino.info — All rights reserved.</small>
   </footer>
