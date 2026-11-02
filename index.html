@@ -11,9 +11,17 @@
   <!-- 2. Load SynapxLab Cookie Consent (GDPR) -->
   <script src="https://cdn.jsdelivr.net/npm/@synapxlab/cookie-consent/dist/cookie.min.js"></script>
 
-  <!-- 3. Initialize SynapxLab with your GA ID -->
+  <!-- 3. Initialize SynapxLab with your GA ID and English texts -->
   <script>
     window.CookieConsent.init({
+      language: 'en',
+      texts: {
+        title: 'Cookie Consent',
+        description: 'We use cookies to ensure you get the best experience on our website. By accepting, you help us improve the service and understand how you use the site.',
+        acceptAll: 'Accept All',
+        rejectAll: 'Reject All',
+        settings: 'Preferences'
+      },
       statistics: {
         google_analytics_key: 'G-RTH67WKMNQ'
       }
@@ -59,6 +67,16 @@
       --gradient-color1: #07090f;  
       --gradient-color2: #121824;   
       --gradient-color3: #0a0e17;
+
+      /* ===== COOKIE BANNER CUSTOM STYLES ===== */
+      --cc-bg: var(--card-bg);
+      --cc-text: var(--text);
+      --cc-btn-primary-bg: var(--accent);
+      --cc-btn-primary-text: #0b0e14;
+      --cc-btn-secondary-bg: transparent;
+      --cc-btn-secondary-text: var(--text);
+      --cc-btn-border-radius: 12px;
+      --cc-font-family: 'Inter', sans-serif;
     }    
 
     /* ===== CSS VARIABLES (LIGHT THEME) ===== */
