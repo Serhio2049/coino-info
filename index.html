@@ -138,36 +138,22 @@
     .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }    
     .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
-    /* ===== VOTE FEATURE CARD ===== */
+     /* ===== VOTE FEATURE CARD ===== */
     .vote-feature-card {
       text-decoration: none;
       color: inherit;
       display: block;
       position: relative;
+      border-color: rgba(203, 213, 225, 0.3); 
     }
-    .vote-feature-card .vote-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 14px;
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
-      color: #0b0e14;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 60px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-    .vote-feature-card:hover .vote-cta {
-      background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
-      transform: scale(1.05);
-    }
-    .vote-feature-card .vote-cta i {
-      font-size: 0.8rem;
-      transition: transform 0.2s ease;
-    }
-    .vote-feature-card:hover .vote-cta i {
-      transform: translateX(3px);
+    .vote-feature-card i {
+      color: var(--text); 
+      filter: drop-shadow(0 0 10px rgba(203, 213, 225, 0.4));
+      transition: 0.4s;
+    } 
+    .vote-feature-card:hover i {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 15px rgba(203, 213, 225, 0.6));
     }
     
     /* ===== BOTTOM LINKS ===== */
@@ -297,7 +283,6 @@
         <i class="fas fa-vote-yea"></i>
         <h3>Governance Vote</h3>
         <p>Vote on the Coino V4 upgrade, the 10:1 swap, exchange listings and development.</p>
-        <span class="vote-cta">Vote now <i class="fas fa-arrow-right"></i></span>
       </a>       
       <div class="feature-card">        
         <i class="fas fa-shield-alt"></i>        
