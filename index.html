@@ -138,6 +138,38 @@
     .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }    
     .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
 
+    /* ===== VOTE FEATURE CARD ===== */
+    .vote-feature-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+    }
+    .vote-feature-card .vote-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+      color: #0b0e14;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 60px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .vote-feature-card:hover .vote-cta {
+      background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+      transform: scale(1.05);
+    }
+    .vote-feature-card .vote-cta i {
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+    .vote-feature-card:hover .vote-cta i {
+      transform: translateX(3px);
+    }
+    
     /* ===== BOTTOM LINKS ===== */
     .bottom-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 28px 40px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.95rem; animation: fadeInUp 1s ease-out 0.4s both; }    
     .bottom-links a { color: var(--text-secondary); text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid transparent; padding-bottom: 2px; }    
@@ -259,12 +291,20 @@
       <a href="https://scan.coino.info" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-right"></i> Explore Coino</a>
     </div>
     
-    <div class="features">      
+       <div class="features">      
+      <!-- Карточка голосования -->
+      <a href="https://scan.coino.info/vote.html" class="feature-card vote-feature-card" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-vote-yea"></i>
+        <h3>Governance Vote</h3>
+        <p>Vote on the Coino V4 upgrade, the 10:1 swap, exchange listings and development.</p>
+        <span class="vote-cta">Vote now <i class="fas fa-arrow-right"></i></span>
+      </a>
+      
       <div class="feature-card">        
-        <i class="fas fa-bolt"></i>        
-        <h3>Lightning speed</h3>        
-        <p>Up to 10,000 TPS with near‑zero fees — ready for everyday payments.</p>      
-      </div>      
+        <i class="fas fa-shield-alt"></i>        
+        <h3>Secure & private</h3>        
+        <p>Proof‑of‑Stake consensus and advanced cryptography protect your assets.</p>      
+      </div>         
       <div class="feature-card">        
         <i class="fas fa-shield-alt"></i>        
         <h3>Secure & private</h3>        
